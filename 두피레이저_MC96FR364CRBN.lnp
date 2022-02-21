@@ -1,0 +1,13 @@
+"startup.obj",
+"main.obj",
+"interrupt.obj",
+"peripheral.obj",
+"Reg.obj",
+"aIVR8511.obj",
+"Display.obj",
+"Util.obj",
+"Key.obj",
+"subroutine.obj" 
+TO "두피레이저_MC96FR364CRBN" 
+RAMSIZE(256) 
+CODE( 0X0000-0X3FFE )

@@ -1,0 +1,361 @@
+C51 COMPILER V9.05   SUBROUTINE                                                            02/21/2022 13:11:14 PAGE 1   
+
+
+C51 COMPILER V9.05, COMPILATION OF MODULE SUBROUTINE
+NO OBJECT MODULE REQUESTED
+COMPILER INVOKED BY: C:\Keil\C51\BIN\C51.EXE subroutine.c LARGE ROM(COMPACT) BROWSE DEBUG OBJECTEXTEND TABS(2) SRC(.\sub
+                    -routine.SRC)
+
+line level    source
+
+   1          //******************************************************************************
+   2          // Title      : subroutine.c
+   3          // Description    : timer, sub function, db etc
+   4          // Programming date : 2014. 10. 23
+   5          //******************************************************************************
+   6          
+   7          
+   8          #include  "global.h"
+   9          
+  10          
+  11          
+  12          unsigned int xdata gu16HalTimer = 0x0f00; // dummy
+  13          unsigned int xdata gu16HalTimerT2 =0x0f00;  // dummy
+  14          unsigned int xdata gu16HalTimerT1 =0x0f00;  // dummy
+  15          
+  16          ///////////////////////////////////////////////////////////////////////////////////////////////
+  17          /// 
+  18          ///   Global variable for flash page buffer. Flash page buffer area : xdata[0x8000 ~ 0x807F(803f)
+  19          /// 
+  20          ///////////////////////////////////////////////////////////////////////////////////////////////
+  21          xdata unsigned char gu8FlashPageBuffer[FLASH_BUFFER_SIZE] _at_ 0x8000;
+  22          
+  23          ///////////////////////////////////////////////////////////////////////////////////////////////
+  24          /// 
+  25          ///   Erases flash by 1 page(128 Bytes).
+  26          ///
+  27          /// @param  void
+  28          /// @return void
+  29          /// @note When this function is called directly, the flash is not erased. 
+  30          ///     It is valid only when called in HAL_FlashPageWrite().
+  31          /// 
+  32          ///////////////////////////////////////////////////////////////////////////////////////////////
+  33          void HAL_FlashPageErase(unsigned int u16FlashWordAddr)
+  34          {
+  35   1        unsigned char ib;
+  36   1      
+  37   1        /* Step 1. Enter the flash program mode */
+  38   1        flash_program_mode_entry();
+  39   1      
+  40   1        /* Step 2. Reset page buffer */
+  41   1        FECR = 0x00;
+  42   1        _nop_(); _nop_(); _nop_();
+  43   1      
+  44   1        /* Step 3. Load page buffer. */
+  45   1        for(ib = 0; ib < FLASH_BUFFER_SIZE; ib++)
+  46   1        {
+  47   2          gu8FlashPageBuffer[ib] = 0x00;
+  48   2        }
+  49   1      
+  50   1        /* Step 4. Set page address. */
+  51   1        FEARH = 0;    // Bank
+  52   1        FEARM = (unsigned char)(u16FlashWordAddr>>8);
+  53   1        FEARL = (unsigned char)u16FlashWordAddr & 0xFF;
+  54   1      
+C51 COMPILER V9.05   SUBROUTINE                                                            02/21/2022 13:11:14 PAGE 2   
+
+  55   1        /* Step 5. Set erase time. */
+  56   1        FETCR = 0xEA;      // 2.5ms @12MHz;
+  57   1      
+  58   1        /* Step 6. Start page erase */
+  59   1        FECR = 0x03;    //erase_start(); 364b
+  60   1      //  FECR = 0x0B;    //erase_start(); 116c
+  61   1        _nop_(); _nop_(); _nop_(); _nop_(); _nop_();  // 5 nop instructions recommended after cpu stop during for 
+             -erase or write operation.
+  62   1      
+  63   1        /* Step 7. Wait process done */
+  64   1        while((FESR & BIT7) == 0x00);
+  65   1      
+  66   1        /* Step 8. Exit from program mode */
+  67   1        //FECR |= 0x30;
+  68   1      }
+  69          
+  70          ///////////////////////////////////////////////////////////////////////////////////////////////
+  71          /// 
+  72          ///   Writes flash by 1 page(128 Bytes).
+  73          ///
+  74          /// @param  u16CodeAddr : Code address from which flash is written
+  75          /// @param  pu8ByteBuf  : Pointer to the buffer to be written.
+  76          /// @param  u8Option    : Option for writing
+  77          ///       \n  bit[7:1]  : reserved
+  78          ///       \n  bit[0]  : 1=Erasing only. Writing is not permitted.
+  79          /// @return unsigned char. Status.
+  80          /// 
+  81          ///////////////////////////////////////////////////////////////////////////////////////////////
+  82          unsigned char HAL_FlashPageWrite(unsigned int u16CodeAddr, unsigned char* pu8ByteBuf, unsigned char u8Opti
+             -on)
+  83          {
+  84   1        unsigned char ib;
+  85   1        unsigned char u8Status;
+  86   1      
+  87   1      //  unsigned char code * pu8CodeBuf;
+  88   1      //  unsigned char u8WriteLoop;
+  89   1      //  unsigned int  u16WriteSum;
+  90   1      //  unsigned int  u16ReadSum;
+  91   1        unsigned char u8EA;
+  92   1      
+  93   1        if(u16CodeAddr & (FLASH_BUFFER_SIZE-1))         // 64 OR 128 bytes align
+  94   1        {
+  95   2          assert_error(FLASH_CODE | RETURN_FLASH_ALIGN_FAILURE);
+  96   2          return RETURN_FLASH_ALIGN_FAILURE;
+  97   2        }
+  98   1      
+  99   1        SYS_WdtSet(1000);
+ 100   1        /* Step 1. Erase flash page */
+ 101   1        SYS_WdtSet(0);
+ 102   1        u8EA = EA;
+ 103   1        EA = 0;
+ 104   1        HAL_FlashPageErase(u16CodeAddr);
+ 105   1      
+ 106   1        if(u8Option & BIT0)
+ 107   1        {
+ 108   2          u8Status = RETURN_FLASH_SUCCESS;
+ 109   2          goto JP_HAL_FlashPageWrite;
+ 110   2        }
+ 111   1      
+ 112   1        /* Step 2. Enter the flash program mode */
+ 113   1        flash_program_mode_entry();
+ 114   1      
+C51 COMPILER V9.05   SUBROUTINE                                                            02/21/2022 13:11:14 PAGE 3   
+
+ 115   1        /* Step 3. Page write. */
+ 116   1      //  for(u8WriteLoop=0 ; u8WriteLoop<100 ; u8WriteLoop++)
+ 117   1        {
+ 118   2      
+ 119   2      
+ 120   2          /* Step 3-1. Reset page buffer */
+ 121   2          FECR = 0x00;
+ 122   2          _nop_();
+ 123   2      
+ 124   2          /* Step 3-2. Load page buffer. */
+ 125   2      //    u16WriteSum = 0;
+ 126   2          for(ib = 0; ib < FLASH_BUFFER_SIZE; ib++)
+ 127   2          {
+ 128   3      //      u16WriteSum += gu8FlashPageBuffer[ib] = pu8ByteBuf[ib];
+ 129   3            gu8FlashPageBuffer[ib] = pu8ByteBuf[ib];
+ 130   3          }
+ 131   2          _nop_(); _nop_(); _nop_();
+ 132   2      
+ 133   2          /* Step 3-3. Set page address. */
+ 134   2          FEARH = 0;    // Bank
+ 135   2          FEARM = (unsigned char)(u16CodeAddr >> 8);
+ 136   2          FEARL = (unsigned char)(u16CodeAddr & 0xFF);
+ 137   2      
+ 138   2          /* Step 3-4. Set write time. */
+ 139   2          FETCR = 0xEA;      // 2.5ms @12MHz;
+ 140   2      
+ 141   2          /* Step 3-5. Start page Write */
+ 142   2          FECR = 0x05;    //program_start();
+ 143   2          _nop_(); _nop_(); _nop_(); _nop_(); _nop_();  // 5 nop instructions recommended after cpu stop during for
+             - erase or write operation.
+ 144   2      
+ 145   2          /* Step 3-6. Wait process done */
+ 146   2          while((FESR & BIT7) == 0x00);
+ 147   2          u8Status = RETURN_FLASH_SUCCESS;
+ 148   2      #if 0
+                  /* Step 3-7. Check written page */
+                  FEARL &= ~0x7F;
+                  pu8CodeBuf = u16CodeAddr;
+                  u16ReadSum = 0;
+                  for(ib=0; ib<FLASH_BUFFER_SIZE; ib++)
+                  {
+                    u16ReadSum += pu8CodeBuf[ib];
+                  }
+              
+                  if(u16WriteSum == u16ReadSum)
+                  {
+                    u8Status = RETURN_FLASH_SUCCESS;
+                    break;
+                  }
+                  else
+                  {
+                    u8Status = RETURN_FLASH_PAGE_WRITE_FAIL;
+                  }
+              #endif
+ 168   2        }
+ 169   1        EA = u8EA;
+ 170   1        JP_HAL_FlashPageWrite :
+ 171   1      
+ 172   1        /* Step 4. Exit from program mode */
+ 173   1        FECR = 0x30;
+ 174   1      
+ 175   1        if(u8Status)
+C51 COMPILER V9.05   SUBROUTINE                                                            02/21/2022 13:11:14 PAGE 4   
+
+ 176   1        {
+ 177   2          assert_error(FLASH_CODE | u8Status);
+ 178   2        }
+ 179   1      
+ 180   1        return u8Status;
+ 181   1      }
+ 182          //#ifndef _20_LITE
+ 183          ///////////////////////////////////////////////////////////////////////////////////////////////
+ 184          /// 
+ 185          ///   Reads flash.
+ 186          ///
+ 187          /// @param  u16CodeAddr : Code address from which flash is read.
+ 188          /// @param  pu8ReadBuf  : Pointer to the buffer in which read flash is stored.
+ 189          /// @param  u16ByteLen  : Number of bytes to read.
+ 190          /// @return unsigned char. Status.
+ 191          /// 
+ 192          ///////////////////////////////////////////////////////////////////////////////////////////////
+ 193          unsigned char HAL_FlashRead(unsigned int u16CodeAddr, unsigned char* pu8ReadBuf, unsigned int u16ByteLen)
+ 194          {
+ 195   1        unsigned int  iw;
+ 196   1        unsigned long u32LastCodeAddr;
+ 197   1        unsigned char code * pu8CodeBuf;
+ 198   1      
+ 199   1        unsigned int  u16ReadSum_1 = 0;
+ 200   1        unsigned int  u16ReadSum_2 = 0;
+ 201   1      
+ 202   1        u32LastCodeAddr = u16CodeAddr;
+ 203   1        u32LastCodeAddr += (u16ByteLen - 1);
+ 204   1      
+ 205   1        if(u32LastCodeAddr & 0xFFFF0000)
+ 206   1        {
+ 207   2          assert_error(FLASH_CODE | RETURN_FLASH_INVALID_ADDRESS);
+ 208   2          return RETURN_FLASH_INVALID_ADDRESS;
+ 209   2        }
+ 210   1      
+ 211   1        pu8CodeBuf = u16CodeAddr;
+*** WARNING C289 IN LINE 211 OF subroutine.c: '=': converting non-pointer to pointer
+ 212   1        for(iw=0 ; iw<u16ByteLen; iw++)
+ 213   1        {
+ 214   2          u16ReadSum_1 += pu8ReadBuf[iw] = pu8CodeBuf[iw];
+ 215   2        }
+ 216   1      
+ 217   1        // Check-Sum
+ 218   1        for(iw=0 ; iw<u16ByteLen ; iw++)
+ 219   1        {
+ 220   2          u16ReadSum_2 += pu8ReadBuf[iw];
+ 221   2        }
+ 222   1        
+ 223   1        // Compare Check-Sum & Return result
+ 224   1        if(u16ReadSum_1 == u16ReadSum_2)
+ 225   1        {
+ 226   2          return RETURN_FLASH_SUCCESS;
+ 227   2        }
+ 228   1        else
+ 229   1        {
+ 230   2          return RETURN_FLASH_PAGE_READ_FAIL;
+ 231   2        }
+ 232   1      }
+ 233          
+ 234          ///////////////////////////////////////////////////////////////////////////////////////////////
+ 235          /// 
+ 236          ///   Global variable which indicates the number of TIMER0's ticks before watchdog reset.
+C51 COMPILER V9.05   SUBROUTINE                                                            02/21/2022 13:11:14 PAGE 5   
+
+ 237          /// 
+ 238          ///////////////////////////////////////////////////////////////////////////////////////////////
+ 239          unsigned int  gu16WdtResetTick;
+ 240          
+ 241          ///////////////////////////////////////////////////////////////////////////////////////////////
+ 242          /// 
+ 243          /// Sets watchdog timer.
+ 244          ///
+ 245          /// @param  u8Ena   : 0=Disable, 1=Enable.
+ 246          /// @param  u8ResetDur  : 43.7ms * u8ResetDur(@ 12MHz)
+ 247          /// @return UINT8. Status.
+ 248          /// 
+ 249          ///////////////////////////////////////////////////////////////////////////////////////////////
+ 250          void MC96_WdtSet(unsigned char u8Ena, unsigned char u8ResetDur)
+ 251          {
+ 252   1        unsigned char u8EA;
+ 253   1      
+ 254   1        u8EA = EA;
+ 255   1        EA = 0;
+ 256   1      
+ 257   1        WDTMR &= ~BIT7;
+ 258   1      
+ 259   1        if(u8Ena)
+ 260   1        {
+ 261   2          WDTR = u8ResetDur;
+ 262   2          WDTMR |= (BIT7|BIT5);
+ 263   2        }
+ 264   1      
+ 265   1        EA = u8EA;
+ 266   1      }
+ 267          
+ 268          void SYS_WdtSet(unsigned int u16Timer0Tick)
+ 269          {
+ 270   1        unsigned char u8EA;
+ 271   1      
+ 272   1        u8EA = EA;
+ 273   1        EA = 0;
+ 274   1      
+ 275   1        if(u16Timer0Tick) // WDT enable
+ 276   1        {
+ 277   2          gu16WdtResetTick = u16Timer0Tick;
+ 278   2          MC96_WdtSet(1, 30);   // 43.7ms * 30 = 1Sec(@ 12MHz)
+ 279   2        } 
+ 280   1        else          // WDT disable
+ 281   1        {
+ 282   2          gu16WdtResetTick = 0;
+ 283   2          MC96_WdtSet(0, 0);
+ 284   2        }
+ 285   1      
+ 286   1        EA = u8EA;
+ 287   1      }
+ 288          ///////////////////////////////////////////////////////////////////////////////////////////////
+ 289          /// 
+ 290          /// Restarts watchdog timer to prevent watchdog timeout.
+ 291          ///
+ 292          /// @param  void
+ 293          /// @return void
+ 294          /// 
+ 295          ///////////////////////////////////////////////////////////////////////////////////////////////
+ 296          void MC96_WdtRestart(void) large reentrant
+ 297          {
+ 298   1        WDTMR |= BIT5;
+C51 COMPILER V9.05   SUBROUTINE                                                            02/21/2022 13:11:14 PAGE 6   
+
+ 299   1      }
+ 300          
+ 301          
+ 302          
+ 303           //======================================================
+ 304          // interrupt routines
+ 305          //======================================================
+ 306          
+ 307          
+ 308          void INT_PCI0() interrupt 21
+ 309          {
+ 310   1        // Pin change interrupt (P0)
+ 311   1        // TODO: add your code here
+ 312   1      }
+ 313          /*
+ 314          unsigned char MsbtoLsb(unsigned char temp)
+ 315          {
+ 316              unsigned char tempret;
+ 317              temp = (((temp & 0x1) << 7) | ((temp & 0x2) << 5) | ((temp & 0x4) << 3) | \
+ 318              ((temp & 0x8) << 1) | ((temp & 0x10) >> 1 ) | ((temp & 0x20) >> 3) | \
+ 319              ((temp & 0x40) >> 5) | ((temp & 0x80) >> 7) );
+ 320              tempret = temp;
+ 321              return  tempret; 
+ 322          }
+ 323          */
+
+
+MODULE INFORMATION:   STATIC OVERLAYABLE
+   CODE SIZE        =    640    ----
+   CONSTANT SIZE    =   ----    ----
+   XDATA SIZE       =      8      29
+   PDATA SIZE       =   ----    ----
+   DATA SIZE        =   ----    ----
+   IDATA SIZE       =   ----    ----
+   BIT SIZE         =   ----    ----
+END OF MODULE INFORMATION.
+
+
+C51 COMPILATION COMPLETE.  1 WARNING(S),  0 ERROR(S)

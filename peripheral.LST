@@ -1,0 +1,137 @@
+C51 COMPILER V9.05   PERIPHERAL                                                            02/21/2022 13:11:13 PAGE 1   
+
+
+C51 COMPILER V9.05, COMPILATION OF MODULE PERIPHERAL
+OBJECT MODULE PLACED IN peripheral.OBJ
+COMPILER INVOKED BY: C:\Keil\C51\BIN\C51.EXE peripheral.c LARGE ROM(COMPACT) BROWSE DEBUG OBJECTEXTEND TABS(2)
+
+line level    source
+
+   1          //======================================================
+   2          // peripheral setting routines
+   3          //======================================================
+   4          
+   5          #include  "MC96FR364C.h"
+   6          #include  "func_def.h"
+   7          
+   8          void BOD_init()
+   9          {
+  10   1        // initialize BOD (Brown out detector)
+  11   1        // BODR bit2~1 = BODout selection
+  12   1        // - default is 00 (BODout1)
+  13   1        BODR = 0x01;      // setting
+  14   1      }
+  15          
+  16          void ExINT_init()
+  17          {
+  18   1        // initialize external interrupt
+  19   1        EIPS5 = 0x05;     // INT.5 = P05
+  20   1      
+  21   1        EIEDGE0 = 0x00;   // INT.3~0 : level / edge
+  22   1        EIEDGE1 = 0x0C;   // INT.5~4 : level / edge
+  23   1        EIPOLA = 0x20;    // polarity
+  24   1        EIFLAG = 0x00;    // clear all flags
+  25   1        IE |= 0x20;       // INT. 5,4,3,2,1,0
+  26   1        EIENAB = 0x20;    // enable INT pin
+  27   1      }
+  28          
+  29          void Timer0_init()
+  30          {
+  31   1        // initialize Timer0
+  32   1        // 8bit timer, period = 1.002667mS
+  33   1        T0CR = 0x92;      // timer setting
+  34   1        T0DR = 0x2E;      // period count
+  35   1        T0CR |= 0x01;     // clear counter
+  36   1        IE1 |= 0x20;      // Enable Timer0 interrupt
+  37   1      }
+  38          
+  39          void WDT_clear()
+  40          {
+  41   1        WDTMR |= 0x20;    // Clear Watch-dog timer
+  42   1      }
+  43          
+  44          void WDT_init()
+  45          {
+  46   1        // initialize Watch-dog timer
+  47   1        WDTR = 0xFF;      // period
+  48   1        WDTMR = 0xC0;     // setting
+  49   1        WDT_clear();
+  50   1      }
+  51          
+  52          void clock_init()
+  53          {
+  54   1        // 12MHz ring OSC.
+  55   1        // Divided clock (12.000000MHz)
+C51 COMPILER V9.05   PERIPHERAL                                                            02/21/2022 13:11:13 PAGE 2   
+
+  56   1        SCCR = (SCCR & 0x9f) | 0x00;  // set clock divider
+  57   1      }
+  58          
+  59          void port_init()
+  60          {
+  61   1        // initialize ports
+  62   1        //   2 : P23      out pFAN_LED1
+  63   1        //   3 : P24      out pFAN_LED2
+  64   1        //   5 : P30      out pPOWER_ON
+  65   1        //   6 : P31      out pFAN_1
+  66   1        //   7 : P32      out pFAN_2
+  67   1        //   8 : P00      out pSCL
+  68   1        //   9 : P01      out pFAN
+  69   1        //  10 : P02      out POWER_LED
+  70   1        //  11 : P03      out pLED_EN1
+  71   1        //  12 : P04      out FAN_OFF
+  72   1        //  13 : P05      in  SENSOR_IN
+  73   1        //  14 : P06      out pTest1
+  74   1        //  15 : P07      out pTest2
+  75   1        //  16 : P10      in  Low_Bat
+  76   1        //  17 : P11      in  FAN_KEY
+  77   1        //  18 : P12      in  KEY
+  78   1        //  19 : P13      in  VOICE_BUSY
+  79   1        //  20 : P14      in  KEY_ADC
+  80   1        //  21 : P15      out VOICE_CSB
+  81   1        //  22 : P16      out VOICE_CLK
+  82   1        //  23 : P17      out VOICE_SDI
+  83   1        //  24 : P20      out 
+  84   1        //  25 : P21      out 
+  85   1        //  26 : P22      out 
+  86   1        P0IO = 0xDF;      // direction
+  87   1        P0PU = 0x20;      // pullup
+  88   1        P0OD = 0x00;      // open drain
+  89   1        P0   = 0x00;      // port initial value
+  90   1      
+  91   1        P1IO = 0xE0;      // direction
+  92   1        P1PU = 0x13;      // pullup
+  93   1        P1OD = 0x00;      // open drain
+  94   1        P1   = 0x00;      // port initial value
+  95   1      
+  96   1        P2IO = 0xFF;      // direction
+  97   1        P2PU = 0x00;      // pullup
+  98   1        P2OD = 0x00;      // open drain
+  99   1        P2   = 0x00;      // port initial value
+ 100   1      
+ 101   1        P3IO = 0xFF;      // direction
+ 102   1        P3PU = 0x00;      // pullup
+ 103   1        P3OD = 0x00;      // open drain
+ 104   1        P3   = 0x00;      // port initial value
+ 105   1      
+ 106   1        // Set port functions
+ 107   1        //PMISC0   = 0x??;  // USART port, REMOUT TR
+ 108   1        //PMISC1   = 0x??;  // Slew rate, IR pullup R
+ 109   1      }
+ 110          
+
+
+MODULE INFORMATION:   STATIC OVERLAYABLE
+   CODE SIZE        =    117    ----
+   CONSTANT SIZE    =   ----    ----
+   XDATA SIZE       =   ----    ----
+   PDATA SIZE       =   ----    ----
+C51 COMPILER V9.05   PERIPHERAL                                                            02/21/2022 13:11:13 PAGE 3   
+
+   DATA SIZE        =   ----    ----
+   IDATA SIZE       =   ----    ----
+   BIT SIZE         =   ----    ----
+END OF MODULE INFORMATION.
+
+
+C51 COMPILATION COMPLETE.  0 WARNING(S),  0 ERROR(S)

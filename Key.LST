@@ -1,0 +1,152 @@
+C51 COMPILER V9.05   KEY                                                                   02/21/2022 13:11:14 PAGE 1   
+
+
+C51 COMPILER V9.05, COMPILATION OF MODULE KEY
+OBJECT MODULE PLACED IN Key.OBJ
+COMPILER INVOKED BY: C:\Keil\C51\BIN\C51.EXE Key.C LARGE ROM(COMPACT) BROWSE DEBUG OBJECTEXTEND TABS(2)
+
+line level    source
+
+   1          
+   2          #include  "Global.h"                      
+   3          
+   4          uchr Rx_Buff1[32];
+   5          
+   6          
+   7          uchr gcKey_cnt,gcKey_Data,gcKey_old_buff,gcKey_Buff,sensor_Buff,sensor_old_buff,Sensor_cnt,Sensor_Data;
+   8          bit  fgKey_flag,Sensor_flag,_Power_Off;
+   9          
+  10          #define Key_Power  1
+  11          #define Key_Fan  2
+  12          #define Low_Bat_Cnt_Ini  2
+  13          
+  14          
+  15          
+  16          
+  17          void Key_Check_Rtn(void)
+  18          {
+  19   1        
+  20   1        gcKey_Buff=0;
+  21   1        if(Key_Reg>1000)gcKey_Buff=1;
+  22   1        if(!pKey_Fan)gcKey_Buff|=2; 
+  23   1        if(gcKey_Buff==gcKey_old_buff)
+  24   1        {
+  25   2            if(gcKey_cnt==100&&_First_Key==0&&gcKey_Buff==1)//power
+  26   2            {
+  27   3              Key_Bit=1;
+  28   3              if(Mode==70)return;
+  29   3              if(gcKey_Buff=gcKey_Buff)
+  30   3              {
+  31   4                Mode=100;
+  32   4              }
+  33   3            }   
+  34   2            if(gcKey_cnt==100&&Sec_Fuction_Time&&gcKey_Buff==3)// toggle
+  35   2            {
+  36   3      //        int i;
+  37   3               if(Voice_Stop==0)
+  38   3               {
+  39   4                Voice_Stop=1; Sec_Fuction_Time1=100;//10초간 소리허용
+  40   4                Mode=59;//무음모드
+  41   4                S_Step=0;
+  42   4               }    
+  43   3               else 
+  44   3               {
+  45   4                Voice_Stop=0;
+  46   4                Mode=58;//음성모드
+  47   4                S_Step=0;
+  48   4            }
+  49   3               Rx_Buff1[0]=Voice_Stop;
+  50   3            //i=CodeFlash_Erase(509,1); //400 => 0x6400~6db6  2487 byte
+  51   3            //if(i==0)
+  52   3            {
+  53   4              //i=CodeFlash_Write(Rx_Buff1,509,1);
+  54   4              HAL_FlashPageWrite(8,1,0);
+  55   4              Voice_Stop=coderom[0];
+C51 COMPILER V9.05   KEY                                                                   02/21/2022 13:11:14 PAGE 2   
+
+  56   4            }             
+  57   3            }   
+  58   2            
+  59   2            
+  60   2            if(++gcKey_cnt>5) //
+  61   2          {
+  62   3            if(!gcKey_Buff)
+  63   3            {
+  64   4              fgKey_flag=1;
+  65   4              gcKey_cnt=0;
+  66   4              _First_Key=0;
+  67   4            }
+  68   3            else if(fgKey_flag)
+  69   3            {
+  70   4              fgKey_flag=0;
+  71   4              gcKey_Data=gcKey_Buff;
+  72   4              //gcKey_Buff=0;
+  73   4            }
+  74   3          }
+  75   2        }
+  76   1        else
+  77   1        {
+  78   2          gcKey_cnt=0;
+  79   2          gcKey_old_buff=gcKey_Buff;
+  80   2          gcKey_Buff=0;
+  81   2        }
+  82   1        
+  83   1        if(gcKey_Data&&!gcKey_Buff)
+  84   1        {
+  85   2          if(Key_Bit){gcKey_Data=0;return;}
+  86   2          if(gcKey_Data==1)//Power
+  87   2          {
+  88   3            //if(++Mode>2)Mode=1; 
+  89   3            //S_Step=0;
+  90   3          } 
+  91   2          
+  92   2          if(gcKey_Data==2)//fan key
+  93   2          {
+  94   3            if(Mode==2)
+  95   3            {
+  96   4              if(++Fan_Mode>2)
+  97   4              {
+  98   5                Fan_Mode=0;
+  99   5              } 
+ 100   4              Fan_Frag=Fan_Mode;
+ 101   4              S_StepF=0;
+ 102   4            }
+ 103   3          }
+ 104   2          gcKey_Data=0;
+ 105   2        }   
+ 106   1      } 
+ 107          
+ 108          void Low_Batt(void)
+ 109          {
+ 110   1        if(Mode==70)return;
+ 111   1        if(!pLow_Batt)Low_Bat_Cnt++;
+ 112   1        else Low_Bat_Cnt=0;
+ 113   1        if(Low_Bat_Cnt==Low_Bat_Cnt_Ini)//50mS
+ 114   1        {
+ 115   2          Key_Bit=1;
+ 116   2          Mode_Step=0;
+ 117   2          Mode=70; 
+C51 COMPILER V9.05   KEY                                                                   02/21/2022 13:11:14 PAGE 3   
+
+ 118   2        }
+ 119   1        
+ 120   1        
+ 121   1      }
+ 122          
+ 123          
+ 124          
+ 125           
+
+
+MODULE INFORMATION:   STATIC OVERLAYABLE
+   CODE SIZE        =    385    ----
+   CONSTANT SIZE    =   ----    ----
+   XDATA SIZE       =     40    ----
+   PDATA SIZE       =   ----    ----
+   DATA SIZE        =   ----    ----
+   IDATA SIZE       =   ----    ----
+   BIT SIZE         =      3    ----
+END OF MODULE INFORMATION.
+
+
+C51 COMPILATION COMPLETE.  0 WARNING(S),  0 ERROR(S)

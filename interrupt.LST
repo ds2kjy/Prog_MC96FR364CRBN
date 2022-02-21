@@ -1,0 +1,76 @@
+C51 COMPILER V9.05   INTERRUPT                                                             02/21/2022 13:11:13 PAGE 1   
+
+
+C51 COMPILER V9.05, COMPILATION OF MODULE INTERRUPT
+OBJECT MODULE PLACED IN interrupt.OBJ
+COMPILER INVOKED BY: C:\Keil\C51\BIN\C51.EXE interrupt.c LARGE ROM(COMPACT) BROWSE DEBUG OBJECTEXTEND TABS(2)
+
+line level    source
+
+   1          //======================================================
+   2          // interrupt routines
+   3          //======================================================
+   4          
+   5          #include  "Global.h"
+   6          uchr r10mS_Cnt,r100mS_Cnt,r50mS_Cnt,r1S_Cnt;
+   7          bit _1mS,_10mS,_100mS,_50mS,_1S;
+   8          
+   9          
+  10          void INT_Ext5() interrupt 5
+  11          {
+  12   1        // External interrupt 5
+  13   1        // TODO: add your code here
+  14   1      }
+  15          
+  16          void INT_Timer0() interrupt 11
+  17          {
+  18   1          _1mS=1;
+  19   1        if(++r10mS_Cnt>=10)
+  20   1        {
+  21   2          r10mS_Cnt=0;//Step_Sys_Time_Cnt++;
+  22   2          _10mS=1;  
+  23   2          if(++r50mS_Cnt>=5)
+  24   2          {
+  25   3            r50mS_Cnt=0;
+  26   3            _50mS=1;
+  27   3          }   
+  28   2          if(++r100mS_Cnt>=10)
+  29   2          {
+  30   3            Sys_Err++;
+  31   3            if(++Wink_1_Reg>5)
+  32   3            {
+  33   4              Wink_1_Reg=0;
+  34   4              _Wink_1=~_Wink_1;
+  35   4            }
+  36   3            if(++Wink_Reg>2)
+  37   3            {
+  38   4                Wink_Reg=0;
+  39   4              _Wink=~_Wink;
+  40   4            }
+  41   3            r100mS_Cnt=0;
+  42   3            _100mS=1;
+  43   3          }   
+  44   2      
+  45   2          if(++r1S_Cnt>100)
+  46   2          {
+  47   3            r1S_Cnt=0;_1S=1;
+  48   3          }   
+  49   2        } 
+  50   1      }
+  51          
+
+
+MODULE INFORMATION:   STATIC OVERLAYABLE
+   CODE SIZE        =    173    ----
+C51 COMPILER V9.05   INTERRUPT                                                             02/21/2022 13:11:13 PAGE 2   
+
+   CONSTANT SIZE    =   ----    ----
+   XDATA SIZE       =      4    ----
+   PDATA SIZE       =   ----    ----
+   DATA SIZE        =   ----    ----
+   IDATA SIZE       =   ----    ----
+   BIT SIZE         =      5    ----
+END OF MODULE INFORMATION.
+
+
+C51 COMPILATION COMPLETE.  0 WARNING(S),  0 ERROR(S)

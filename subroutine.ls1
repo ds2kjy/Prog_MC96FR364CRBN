@@ -1,0 +1,1536 @@
+A51 MACRO ASSEMBLER  SUBROUTINE                                                           02/21/2022 13:11:15 PAGE     1
+
+
+MACRO ASSEMBLER A51 V8.02a
+OBJECT MODULE PLACED IN subroutine.OBJ
+ASSEMBLER INVOKED BY: C:\Keil\C51\BIN\A51.EXE subroutine.src PR(.\subroutine.ls1) EP DEBUG
+
+LOC  OBJ            LINE     SOURCE
+
+                       1     ; .\subroutine.SRC generated from: subroutine.c
+                       2     ; COMPILER INVOKED BY:
+                       3     ;        C:\Keil\C51\BIN\C51.EXE subroutine.c LARGE ROM(COMPACT) BROWSE DEBUG OBJECTEXTEND 
+                             TABS(2) SRC(.\subroutine.SRC)
+                       4     
+                       5     $nomod51 
+                       6     
+                       7     NAME    SUBROUTINE
+                       8     
+  0080                 9     P0      DATA    080H
+  0088                10     P1      DATA    088H
+  0090                11     P2      DATA    090H
+  00C0                12     P3      DATA    0C0H
+  00B3                13     T0      DATA    0B3H
+  00B6                14     T1      DATA    0B6H
+  00AF                15     EA      BIT     0A8H.7
+  00CC                16     PWM3DRH DATA    0CCH
+  00BD                17     RDC0    DATA    0BDH
+  00B3                18     CDR0    DATA    0B3H
+  00BA                19     RDC1    DATA    0BAH
+  00B6                20     CDR1    DATA    0B6H
+  00DC                21     WTHDR   DATA    0DCH
+  00CB                22     PWM3DRL DATA    0CBH
+  00A8                23     IEN0    DATA    0A8H
+  00A9                24     IEN1    DATA    0A9H
+  00A8                25     IE      DATA    0A8H
+  00F7                26     KITSR   DATA    0F7H
+  00AA                27     IEN2    DATA    0AAH
+  00AB                28     IEN3    DATA    0ABH
+  008D                29     WDTMR   DATA    08DH
+  00CE                30     PWM3PRH DATA    0CEH
+  00C1                31     P0PC    DATA    0C1H
+  00CD                32     PWM3PRL DATA    0CDH
+  0098                33     P0IO    DATA    098H
+  00B2                34     T0CR    DATA    0B2H
+  00A0                35     P1IO    DATA    0A0H
+  00B4                36     T1CR    DATA    0B4H
+  00B3                37     T0DR    DATA    0B3H
+  008B                38     BCCR    DATA    08BH
+  00B0                39     P2IO    DATA    0B0H
+  00C6                40     T2CR    DATA    0C6H
+  00B5                41     T1DR    DATA    0B5H
+  009B                42     P3IO    DATA    09BH
+  00CA                43     T3CR    DATA    0CAH
+  00EC                44     FECR    DATA    0ECH
+  00C2                45     RDBH    DATA    0C2H
+  00E7                46     UDATA0  DATA    0E7H
+  00FF                47     UDATA1  DATA    0FFH
+  00E6                48     UBAUD0  DATA    0E6H
+  00FE                49     UBAUD1  DATA    0FEH
+  00BB                50     CFHS    DATA    0BBH
+  00C3                51     RDBL    DATA    0C3H
+  00A6                52     I2CSAR  DATA    0A6H
+  00B1                53     EIENAB  DATA    0B1H
+  00EF                54     MCCR    DATA    0EFH
+  0089                55     NCCR    DATA    089H
+  0086                56     BODR    DATA    086H
+  00BC                57     CFLS    DATA    0BCH
+A51 MACRO ASSEMBLER  SUBROUTINE                                                           02/21/2022 13:11:15 PAGE     2
+
+  00AC                58     EIFLAG  DATA    0ACH
+  00E1                59     FEMR    DATA    0E1H
+  008A                60     SCCR    DATA    08AH
+  0080                61     P00     BIT     080H.0
+  00ED                62     FESR    DATA    0EDH
+  00C4                63     RDRH    DATA    0C4H
+  0087                64     PCON    DATA    087H
+  0088                65     P10     BIT     088H.0
+  0081                66     P01     BIT     080H.1
+  008C                67     BITR    DATA    08CH
+  0090                68     P20     BIT     090H.0
+  0089                69     P11     BIT     088H.1
+  0082                70     P02     BIT     080H.2
+  00C0                71     P30     BIT     0C0H.0
+  0091                72     P21     BIT     090H.1
+  008A                73     P12     BIT     088H.2
+  0083                74     P03     BIT     080H.3
+  00C1                75     P31     BIT     0C0H.1
+  0092                76     P22     BIT     090H.2
+  008B                77     P13     BIT     088H.3
+  0084                78     P04     BIT     080H.4
+  00C5                79     RDRL    DATA    0C5H
+  00C2                80     P32     BIT     0C0H.2
+  0093                81     P23     BIT     090H.3
+  008C                82     P14     BIT     088H.4
+  0085                83     P05     BIT     080H.5
+  00C3                84     P33     BIT     0C0H.3
+  0094                85     P24     BIT     090H.4
+  008D                86     P15     BIT     088H.5
+  0086                87     P06     BIT     080H.6
+  00C4                88     P34     BIT     0C0H.4
+  0095                89     P25     BIT     090H.5
+  008E                90     P16     BIT     088H.6
+  0087                91     P07     BIT     080H.7
+  00BE                92     RODR    DATA    0BEH
+  00C5                93     P35     BIT     0C0H.5
+  0096                94     P26     BIT     090H.6
+  008F                95     P17     BIT     088H.7
+  00C6                96     P36     BIT     0C0H.6
+  0097                97     P27     BIT     090H.7
+  00F1                98     WTCR0H  DATA    0F1H
+  00C7                99     P37     BIT     0C0H.7
+  00F3               100     WTCR1H  DATA    0F3H
+  00AF               101     EIPOLA  DATA    0AFH
+  00F5               102     WTCR2H  DATA    0F5H
+  00A1               103     MCRC_CTRL       DATA    0A1H
+  009F               104     I2CSCLHR        DATA    09FH
+  00B6               105     PWM1DR  DATA    0B6H
+  00F2               106     WTCR0L  DATA    0F2H
+  00A9               107     IE1     DATA    0A9H
+  00F4               108     WTCR1L  DATA    0F4H
+  00AA               109     IE2     DATA    0AAH
+  00F6               110     WTCR2L  DATA    0F6H
+  009E               111     I2CSCLLR        DATA    09EH
+  00B7               112     PWM1HR  DATA    0B7H
+  00AB               113     IE3     DATA    0ABH
+  008E               114     WDTR    DATA    08EH
+  00E5               115     USTAT0  DATA    0E5H
+  00FD               116     USTAT1  DATA    0FDH
+  00B5               117     PWM1PR  DATA    0B5H
+  00D1               118     WTMR    DATA    0D1H
+  00C7               119     T2H     DATA    0C7H
+  00CC               120     T3H     DATA    0CCH
+  00C9               121     T3CR2   DATA    0C9H
+  00D9               122     WTSR    DATA    0D9H
+  0099               123     MCRC_DATA0      DATA    099H
+A51 MACRO ASSEMBLER  SUBROUTINE                                                           02/21/2022 13:11:15 PAGE     3
+
+  00CF               124     T2L     DATA    0CFH
+  00DD               125     IRCC0   DATA    0DDH
+  009A               126     MCRC_DATA1      DATA    09AH
+  00CB               127     T3L     DATA    0CBH
+  00DE               128     IRCC1   DATA    0DEH
+  009C               129     I2CCR   DATA    09CH
+  00C7               130     CDR2H   DATA    0C7H
+  00DF               131     IRCC2   DATA    0DFH
+  00A5               132     I2CDR   DATA    0A5H
+  00CC               133     CDR3H   DATA    0CCH
+  00AD               134     EIEDGE0 DATA    0ADH
+  00DA               135     IRCC3   DATA    0DAH
+  00AE               136     EIEDGE1 DATA    0AEH
+  00DB               137     IRCC4   DATA    0DBH
+  00A7               138     I2CSAR1 DATA    0A7H
+  00CF               139     CDR2L   DATA    0CFH
+  00CB               140     CDR3L   DATA    0CBH
+  00BF               141     ROB     DATA    0BFH
+  009D               142     I2CSR   DATA    09DH
+  00D6               143     SRLC0   DATA    0D6H
+  00C7               144     T2HDR   DATA    0C7H
+  00C7               145     T2DRH   DATA    0C7H
+  00D7               146     SRLC1   DATA    0D7H
+  00CE               147     T3HDR   DATA    0CEH
+  00CE               148     T3DRH   DATA    0CEH
+  00F9               149     CFGCR   DATA    0F9H
+  00E9               150     FEARH   DATA    0E9H
+  00CF               151     T2LDR   DATA    0CFH
+  00CF               152     T2DRL   DATA    0CFH
+  00CD               153     T3LDR   DATA    0CDH
+  00CD               154     T3DRL   DATA    0CDH
+  00EB               155     FEARL   DATA    0EBH
+  00EA               156     FEARM   DATA    0EAH
+  00E2               157     UCTRL01 DATA    0E2H
+  00FA               158     UCTRL11 DATA    0FAH
+  00E3               159     UCTRL02 DATA    0E3H
+  00FB               160     UCTRL12 DATA    0FBH
+  00E4               161     UCTRL03 DATA    0E4H
+  00FC               162     UCTRL13 DATA    0FCH
+  00A3               163     I2CSDHR DATA    0A3H
+  00E8               164     RMR     DATA    0E8H
+  00D5               165     WTDR0   DATA    0D5H
+  00D4               166     WTDR1   DATA    0D4H
+  00EE               167     FETCR   DATA    0EEH
+  00D2               168     SMRR0   DATA    0D2H
+  00D3               169     SMRR1   DATA    0D3H
+  008F               170     BODSR   DATA    08FH
+                     171     ?PR?_HAL_FlashPageErase?SUBROUTINE       SEGMENT CODE INBLOCK 
+                     172     ?XD?_HAL_FlashPageErase?SUBROUTINE       SEGMENT XDATA OVERLAYABLE 
+                     173     ?PR?_HAL_FlashPageWrite?SUBROUTINE       SEGMENT CODE INBLOCK 
+                     174     ?XD?_HAL_FlashPageWrite?SUBROUTINE       SEGMENT XDATA OVERLAYABLE 
+                     175     ?PR?_HAL_FlashRead?SUBROUTINE            SEGMENT CODE INBLOCK 
+                     176     ?XD?_HAL_FlashRead?SUBROUTINE            SEGMENT XDATA OVERLAYABLE 
+                     177     ?PR?_MC96_WdtSet?SUBROUTINE              SEGMENT CODE INBLOCK 
+                     178     ?PR?_SYS_WdtSet?SUBROUTINE               SEGMENT CODE INBLOCK 
+                     179     ?PR?_?MC96_WdtRestart?SUBROUTINE         SEGMENT CODE INBLOCK 
+                     180     ?PR?INT_PCI0?SUBROUTINE                  SEGMENT CODE INBLOCK 
+                     181     ?C_INITSEG           SEGMENT CODE 
+                     182     ?XD?SUBROUTINE       SEGMENT XDATA 
+                     183             EXTRN   CODE (flash_program_mode_entry)
+                     184             EXTRN   CODE (?C?CLDOPTR)
+                     185             EXTRN   CODE (?C?LSTXDATA)
+                     186             EXTRN   CODE (?C?CSTOPTR)
+                     187             PUBLIC  gu16HalTimerT2
+                     188             PUBLIC  gu16HalTimerT1
+                     189             PUBLIC  gu8FlashPageBuffer
+A51 MACRO ASSEMBLER  SUBROUTINE                                                           02/21/2022 13:11:15 PAGE     4
+
+                     190             PUBLIC  gu16HalTimer
+                     191             PUBLIC  gu16WdtResetTick
+                     192             PUBLIC  INT_PCI0
+                     193             PUBLIC  _?MC96_WdtRestart
+                     194             PUBLIC  _SYS_WdtSet
+                     195             PUBLIC  _MC96_WdtSet
+                     196             PUBLIC  ?_HAL_FlashRead?BYTE
+                     197             PUBLIC  _HAL_FlashRead
+                     198             PUBLIC  ?_HAL_FlashPageWrite?BYTE
+                     199             PUBLIC  _HAL_FlashPageWrite
+                     200             PUBLIC  _HAL_FlashPageErase
+                     201     
+----                 202             XSEG  AT  08000H
+8000                 203     gu8FlashPageBuffer:   DS   64
+                     204     
+----                 205             RSEG  ?XD?_HAL_FlashPageErase?SUBROUTINE
+0000                 206     ?_HAL_FlashPageErase?BYTE:
+0000                 207     u16FlashWordAddr?040:   DS   2
+                     208     
+----                 209             RSEG  ?XD?_HAL_FlashRead?SUBROUTINE
+0000                 210     ?_HAL_FlashRead?BYTE:
+0000                 211     u16CodeAddr?248:   DS   2
+0002                 212             ORG  2
+0002                 213      pu8ReadBuf?249:   DS   3
+0005                 214             ORG  5
+0005                 215      u16ByteLen?250:   DS   2
+0007                 216             ORG  7
+0007                 217              iw?251:   DS   2
+0009                 218             ORG  9
+0009                 219     u32LastCodeAddr?252:   DS   4
+000D                 220             ORG  13
+000D                 221      pu8CodeBuf?253:   DS   2
+000F                 222             ORG  15
+000F                 223     u16ReadSum_1?254:   DS   2
+0011                 224             ORG  17
+0011                 225     u16ReadSum_2?255:   DS   2
+                     226     
+----                 227             RSEG  ?XD?_HAL_FlashPageWrite?SUBROUTINE
+0000                 228     ?_HAL_FlashPageWrite?BYTE:
+0000                 229     u16CodeAddr?142:   DS   2
+0002                 230             ORG  2
+0002                 231      pu8ByteBuf?143:   DS   3
+0005                 232             ORG  5
+0005                 233        u8Option?144:   DS   1
+0006                 234             ORG  6
+0006                 235        u8Status?146:   DS   1
+0007                 236             ORG  7
+0007                 237            u8EA?147:   DS   1
+                     238     
+----                 239             RSEG  ?XD?SUBROUTINE
+0000                 240     gu16WdtResetTick:   DS   2
+0002                 241        gu16HalTimer:   DS   2
+0004                 242      gu16HalTimerT1:   DS   2
+0006                 243      gu16HalTimerT2:   DS   2
+                     244     
+----                 245             RSEG  ?C_INITSEG
+0000 42              246             DB      042H
+0001 0000     F      247             DW      gu16HalTimer
+0003 0F00            248             DW      00F00H
+                     249     
+0005 42              250             DB      042H
+0006 0000     F      251             DW      gu16HalTimerT2
+0008 0F00            252             DW      00F00H
+                     253     
+000A 42              254             DB      042H
+000B 0000     F      255             DW      gu16HalTimerT1
+A51 MACRO ASSEMBLER  SUBROUTINE                                                           02/21/2022 13:11:15 PAGE     5
+
+000D 0F00            256             DW      00F00H
+                     257     
+                     258     ; //******************************************************************************
+                     259     ; // Title                      : subroutine.c
+                     260     ; // Description                : timer, sub function, db etc
+                     261     ; // Programming date   : 2014. 10. 23
+                     262     ; //******************************************************************************
+                     263     ; 
+                     264     ; 
+                     265     ; #include      "global.h"
+                     266     ; 
+                     267     ; 
+                     268     ; 
+                     269     ; unsigned int xdata gu16HalTimer = 0x0f00;     // dummy
+                     270     ; unsigned int xdata gu16HalTimerT2 =0x0f00;    // dummy
+                     271     ; unsigned int xdata gu16HalTimerT1 =0x0f00;    // dummy
+                     272     ; 
+                     273     ; /////////////////////////////////////////////////////////////////////////////////////////
+                             //////
+                     274     ; ///   
+                     275     ; ///   Global variable for flash page buffer. Flash page buffer area : xdata[0x8000 ~ 0x80
+                             7F(803f)
+                     276     ; ///   
+                     277     ; /////////////////////////////////////////////////////////////////////////////////////////
+                             //////
+                     278     ; xdata unsigned char   gu8FlashPageBuffer[FLASH_BUFFER_SIZE] _at_ 0x8000;
+                     279     ; 
+                     280     ; /////////////////////////////////////////////////////////////////////////////////////////
+                             //////
+                     281     ; ///   
+                     282     ; ///   Erases flash by 1 page(128 Bytes).
+                     283     ; ///
+                     284     ; ///   @param  void
+                     285     ; ///   @return void
+                     286     ; ///   @note   When this function is called directly, the flash is not erased. 
+                     287     ; ///                   It is valid only when called in HAL_FlashPageWrite().
+                     288     ; ///   
+                     289     ; /////////////////////////////////////////////////////////////////////////////////////////
+                             //////
+                     290     ; void HAL_FlashPageErase(unsigned int u16FlashWordAddr)
+                     291     
+----                 292             RSEG  ?PR?_HAL_FlashPageErase?SUBROUTINE
+0000                 293     _HAL_FlashPageErase:
+                     294             USING   0
+                     295                             ; SOURCE LINE # 33
+0000 900000   F      296             MOV     DPTR,#u16FlashWordAddr?040
+0003 EE              297             MOV     A,R6
+0004 F0              298             MOVX    @DPTR,A
+0005 A3              299             INC     DPTR
+0006 EF              300             MOV     A,R7
+0007 F0              301             MOVX    @DPTR,A
+                     302     ; {
+                     303                             ; SOURCE LINE # 34
+                     304     ;       unsigned char   ib;
+                     305     ; 
+                     306     ;       /* Step 1. Enter the flash program mode */
+                     307     ;       flash_program_mode_entry();
+                     308                             ; SOURCE LINE # 38
+0008 120000   F      309             LCALL   flash_program_mode_entry
+                     310     ; 
+                     311     ;       /* Step 2. Reset page buffer */
+                     312     ;       FECR = 0x00;
+                     313                             ; SOURCE LINE # 41
+000B E4              314             CLR     A
+000C F5EC            315             MOV     FECR,A
+                     316     ;       _nop_(); _nop_(); _nop_();
+A51 MACRO ASSEMBLER  SUBROUTINE                                                           02/21/2022 13:11:15 PAGE     6
+
+                     317                             ; SOURCE LINE # 42
+000E 00              318             NOP     
+000F 00              319             NOP     
+0010 00              320             NOP     
+                     321     ; 
+                     322     ;       /* Step 3. Load page buffer. */
+                     323     ;       for(ib = 0; ib < FLASH_BUFFER_SIZE; ib++)
+                     324                             ; SOURCE LINE # 45
+                     325     ;---- Variable 'ib?041' assigned to Register 'R7' ----
+0011                 326     ?C0001:
+                     327     ;       {
+                     328                             ; SOURCE LINE # 46
+                     329     ;               gu8FlashPageBuffer[ib] = 0x00;
+                     330                             ; SOURCE LINE # 47
+0011 7F40            331             MOV     R7,#040H
+0013 908000          332             MOV     DPTR,#gu8FlashPageBuffer
+0016 E4              333             CLR     A
+0017                 334     ?C0034:
+0017 F0              335             MOVX    @DPTR,A
+0018 A3              336             INC     DPTR
+0019 DFFC            337             DJNZ    R7,?C0034
+                     338     ;       }
+                     339                             ; SOURCE LINE # 48
+001B                 340     ?C0002:
+                     341     ; 
+                     342     ;       /* Step 4. Set page address. */
+                     343     ;       FEARH = 0;              // Bank
+                     344                             ; SOURCE LINE # 51
+001B E4              345             CLR     A
+001C F5E9            346             MOV     FEARH,A
+                     347     ;       FEARM = (unsigned char)(u16FlashWordAddr>>8);
+                     348                             ; SOURCE LINE # 52
+001E 900000   F      349             MOV     DPTR,#u16FlashWordAddr?040
+0021 E0              350             MOVX    A,@DPTR
+0022 FC              351             MOV     R4,A
+0023 A3              352             INC     DPTR
+0024 E0              353             MOVX    A,@DPTR
+0025 FD              354             MOV     R5,A
+0026 EC              355             MOV     A,R4
+0027 F5EA            356             MOV     FEARM,A
+                     357     ;       FEARL = (unsigned char)u16FlashWordAddr & 0xFF;
+                     358                             ; SOURCE LINE # 53
+0029 ED              359             MOV     A,R5
+002A F5EB            360             MOV     FEARL,A
+                     361     ; 
+                     362     ;       /* Step 5. Set erase time. */
+                     363     ;       FETCR = 0xEA;      // 2.5ms @12MHz;
+                     364                             ; SOURCE LINE # 56
+002C 75EEEA          365             MOV     FETCR,#0EAH
+                     366     ; 
+                     367     ;       /* Step 6. Start page erase */
+                     368     ;       FECR = 0x03;            //erase_start(); 364b
+                     369                             ; SOURCE LINE # 59
+002F 75EC03          370             MOV     FECR,#03H
+                     371     ; //    FECR = 0x0B;            //erase_start(); 116c
+                     372     ;       _nop_(); _nop_(); _nop_(); _nop_(); _nop_();    // 5 nop instructions recommended a
+                             fter cpu stop during for erase or write operation.
+                     373                             ; SOURCE LINE # 61
+0032 00              374             NOP     
+0033 00              375             NOP     
+0034 00              376             NOP     
+0035 00              377             NOP     
+0036 00              378             NOP     
+0037                 379     ?C0004:
+                     380     ; 
+                     381     ;       /* Step 7. Wait process done */
+A51 MACRO ASSEMBLER  SUBROUTINE                                                           02/21/2022 13:11:15 PAGE     7
+
+                     382     ;       while((FESR & BIT7) == 0x00);
+                     383                             ; SOURCE LINE # 64
+0037 E5ED            384             MOV     A,FESR
+0039 30E7FB          385             JNB     ACC.7,?C0004
+003C                 386     ?C0005:
+                     387     ; 
+                     388     ;       /* Step 8. Exit from program mode */
+                     389     ;       //FECR |= 0x30;
+                     390     ; }
+                     391                             ; SOURCE LINE # 68
+003C                 392     ?C0006:
+003C 22              393             RET     
+                     394     ; END OF _HAL_FlashPageErase
+                     395     
+                     396     ; 
+                     397     ; /////////////////////////////////////////////////////////////////////////////////////////
+                             //////
+                     398     ; ///   
+                     399     ; ///   Writes flash by 1 page(128 Bytes).
+                     400     ; ///
+                     401     ; ///   @param  u16CodeAddr     : Code address from which flash is written
+                     402     ; ///   @param  pu8ByteBuf      : Pointer to the buffer to be written.
+                     403     ; ///   @param  u8Option                : Option for writing
+                     404     ; ///                           \n      bit[7:1]        : reserved
+                     405     ; ///                           \n      bit[0]  : 1=Erasing only. Writing is not permitted.
+                     406     ; ///   @return unsigned char. Status.
+                     407     ; ///   
+                     408     ; /////////////////////////////////////////////////////////////////////////////////////////
+                             //////
+                     409     ; unsigned char HAL_FlashPageWrite(unsigned int u16CodeAddr, unsigned char* pu8ByteBuf, uns
+                             igned char u8Option)
+                     410     
+----                 411             RSEG  ?PR?_HAL_FlashPageWrite?SUBROUTINE
+0000                 412     _HAL_FlashPageWrite:
+                     413             USING   0
+                     414                             ; SOURCE LINE # 82
+0000 900000   F      415             MOV     DPTR,#pu8ByteBuf?143
+0003 EB              416             MOV     A,R3
+0004 F0              417             MOVX    @DPTR,A
+0005 A3              418             INC     DPTR
+0006 EA              419             MOV     A,R2
+0007 F0              420             MOVX    @DPTR,A
+0008 A3              421             INC     DPTR
+0009 E9              422             MOV     A,R1
+000A F0              423             MOVX    @DPTR,A
+000B 900000   F      424             MOV     DPTR,#u16CodeAddr?142
+000E EE              425             MOV     A,R6
+000F F0              426             MOVX    @DPTR,A
+0010 A3              427             INC     DPTR
+0011 EF              428             MOV     A,R7
+0012 F0              429             MOVX    @DPTR,A
+                     430     ; {
+                     431                             ; SOURCE LINE # 83
+                     432     ;       unsigned char   ib;
+                     433     ;       unsigned char   u8Status;
+                     434     ; 
+                     435     ; //    unsigned char   code * pu8CodeBuf;
+                     436     ; //    unsigned char   u8WriteLoop;
+                     437     ; //    unsigned int    u16WriteSum;
+                     438     ; //    unsigned int    u16ReadSum;
+                     439     ;       unsigned char   u8EA;
+                     440     ; 
+                     441     ;       if(u16CodeAddr & (FLASH_BUFFER_SIZE-1))                                 // 64 OR 12
+                             8 bytes align
+                     442                             ; SOURCE LINE # 93
+0013 543F            443             ANL     A,#03FH
+A51 MACRO ASSEMBLER  SUBROUTINE                                                           02/21/2022 13:11:15 PAGE     8
+
+0015 6004            444             JZ      ?C0007
+                     445     ;       {
+                     446                             ; SOURCE LINE # 94
+                     447     ;               assert_error(FLASH_CODE | RETURN_FLASH_ALIGN_FAILURE);
+                     448                             ; SOURCE LINE # 95
+0017 00              449             NOP     
+                     450     ;               return RETURN_FLASH_ALIGN_FAILURE;
+                     451                             ; SOURCE LINE # 96
+0018 7F14            452             MOV     R7,#014H
+001A 22              453             RET     
+                     454     ;       }
+                     455                             ; SOURCE LINE # 97
+001B                 456     ?C0007:
+                     457     ; 
+                     458     ;       SYS_WdtSet(1000);
+                     459                             ; SOURCE LINE # 99
+001B 7FE8            460             MOV     R7,#0E8H
+001D 7E03            461             MOV     R6,#03H
+001F 120000   F      462             LCALL   _SYS_WdtSet
+                     463     ;       /* Step 1. Erase flash page */
+                     464     ;       SYS_WdtSet(0);
+                     465                             ; SOURCE LINE # 101
+0022 E4              466             CLR     A
+0023 FF              467             MOV     R7,A
+0024 FE              468             MOV     R6,A
+0025 120000   F      469             LCALL   _SYS_WdtSet
+                     470     ;       u8EA = EA;
+                     471                             ; SOURCE LINE # 102
+0028 A2AF            472             MOV     C,EA
+002A E4              473             CLR     A
+002B 33              474             RLC     A
+002C 900000   F      475             MOV     DPTR,#u8EA?147
+002F F0              476             MOVX    @DPTR,A
+                     477     ;       EA = 0;
+                     478                             ; SOURCE LINE # 103
+0030 C2AF            479             CLR     EA
+                     480     ;       HAL_FlashPageErase(u16CodeAddr);
+                     481                             ; SOURCE LINE # 104
+0032 900000   F      482             MOV     DPTR,#u16CodeAddr?142
+0035 E0              483             MOVX    A,@DPTR
+0036 FE              484             MOV     R6,A
+0037 A3              485             INC     DPTR
+0038 E0              486             MOVX    A,@DPTR
+0039 FF              487             MOV     R7,A
+003A 120000   F      488             LCALL   _HAL_FlashPageErase
+                     489     ; 
+                     490     ;       if(u8Option & BIT0)
+                     491                             ; SOURCE LINE # 106
+003D 900000   F      492             MOV     DPTR,#u8Option?144
+0040 E0              493             MOVX    A,@DPTR
+0041 30E005          494             JNB     ACC.0,?C0009
+                     495     ;       {
+                     496                             ; SOURCE LINE # 107
+                     497     ;               u8Status = RETURN_FLASH_SUCCESS;
+                     498                             ; SOURCE LINE # 108
+0044 E4              499             CLR     A
+0045 A3              500             INC     DPTR
+0046 F0              501             MOVX    @DPTR,A
+                     502     ;               goto JP_HAL_FlashPageWrite;
+                     503                             ; SOURCE LINE # 109
+0047 805C            504             SJMP    ?_HAL_FlashPageWrite?JP_HAL_FlashPageWrite
+                     505     ;       }
+                     506                             ; SOURCE LINE # 110
+0049                 507     ?C0009:
+                     508     ; 
+                     509     ;       /* Step 2. Enter the flash program mode */
+A51 MACRO ASSEMBLER  SUBROUTINE                                                           02/21/2022 13:11:15 PAGE     9
+
+                     510     ;       flash_program_mode_entry();
+                     511                             ; SOURCE LINE # 113
+0049 120000   F      512             LCALL   flash_program_mode_entry
+                     513     ; 
+                     514     ;       /* Step 3. Page write. */
+                     515     ; //    for(u8WriteLoop=0 ; u8WriteLoop<100 ; u8WriteLoop++)
+                     516     ;       {
+                     517                             ; SOURCE LINE # 117
+                     518     ; 
+                     519     ; 
+                     520     ;               /* Step 3-1. Reset page buffer */
+                     521     ;               FECR = 0x00;
+                     522                             ; SOURCE LINE # 121
+004C E4              523             CLR     A
+004D F5EC            524             MOV     FECR,A
+                     525     ;               _nop_();
+                     526                             ; SOURCE LINE # 122
+004F 00              527             NOP     
+                     528     ; 
+                     529     ;               /* Step 3-2. Load page buffer. */
+                     530     ; //            u16WriteSum = 0;
+                     531     ;               for(ib = 0; ib < FLASH_BUFFER_SIZE; ib++)
+                     532                             ; SOURCE LINE # 126
+                     533     ;---- Variable 'ib?145' assigned to Register 'R7' ----
+0050 FF              534             MOV     R7,A
+0051                 535     ?C0011:
+                     536     ;               {
+                     537                             ; SOURCE LINE # 127
+                     538     ; //                    u16WriteSum += gu8FlashPageBuffer[ib] = pu8ByteBuf[ib];
+                     539     ;                       gu8FlashPageBuffer[ib] = pu8ByteBuf[ib];
+                     540                             ; SOURCE LINE # 129
+0051 900000   F      541             MOV     DPTR,#pu8ByteBuf?143
+0054 E0              542             MOVX    A,@DPTR
+0055 FB              543             MOV     R3,A
+0056 A3              544             INC     DPTR
+0057 E0              545             MOVX    A,@DPTR
+0058 FA              546             MOV     R2,A
+0059 A3              547             INC     DPTR
+005A E0              548             MOVX    A,@DPTR
+005B F9              549             MOV     R1,A
+005C 8F82            550             MOV     DPL,R7
+005E 758300          551             MOV     DPH,#00H
+0061 120000   F      552             LCALL   ?C?CLDOPTR
+0064 FE              553             MOV     R6,A
+0065 7400            554             MOV     A,#LOW (gu8FlashPageBuffer)
+0067 2F              555             ADD     A,R7
+0068 F582            556             MOV     DPL,A
+006A E4              557             CLR     A
+006B 3480            558             ADDC    A,#HIGH (gu8FlashPageBuffer)
+006D F583            559             MOV     DPH,A
+006F EE              560             MOV     A,R6
+0070 F0              561             MOVX    @DPTR,A
+                     562     ;               }
+                     563                             ; SOURCE LINE # 130
+0071 0F              564             INC     R7
+0072 EF              565             MOV     A,R7
+0073 B440DB          566             CJNE    A,#040H,?C0011
+0076                 567     ?C0012:
+                     568     ;               _nop_(); _nop_(); _nop_();
+                     569                             ; SOURCE LINE # 131
+0076 00              570             NOP     
+0077 00              571             NOP     
+0078 00              572             NOP     
+                     573     ; 
+                     574     ;               /* Step 3-3. Set page address. */
+                     575     ;               FEARH = 0;              // Bank
+A51 MACRO ASSEMBLER  SUBROUTINE                                                           02/21/2022 13:11:15 PAGE    10
+
+                     576                             ; SOURCE LINE # 134
+0079 E4              577             CLR     A
+007A F5E9            578             MOV     FEARH,A
+                     579     ;               FEARM = (unsigned char)(u16CodeAddr >> 8);
+                     580                             ; SOURCE LINE # 135
+007C 900000   F      581             MOV     DPTR,#u16CodeAddr?142
+007F E0              582             MOVX    A,@DPTR
+0080 FC              583             MOV     R4,A
+0081 A3              584             INC     DPTR
+0082 E0              585             MOVX    A,@DPTR
+0083 FD              586             MOV     R5,A
+0084 EC              587             MOV     A,R4
+0085 F5EA            588             MOV     FEARM,A
+                     589     ;               FEARL = (unsigned char)(u16CodeAddr & 0xFF);
+                     590                             ; SOURCE LINE # 136
+0087 ED              591             MOV     A,R5
+0088 F5EB            592             MOV     FEARL,A
+                     593     ; 
+                     594     ;               /* Step 3-4. Set write time. */
+                     595     ;               FETCR = 0xEA;      // 2.5ms @12MHz;
+                     596                             ; SOURCE LINE # 139
+008A 75EEEA          597             MOV     FETCR,#0EAH
+                     598     ; 
+                     599     ;               /* Step 3-5. Start page Write */
+                     600     ;               FECR = 0x05;            //program_start();
+                     601                             ; SOURCE LINE # 142
+008D 75EC05          602             MOV     FECR,#05H
+                     603     ;               _nop_(); _nop_(); _nop_(); _nop_(); _nop_();    // 5 nop instructions recom
+                             mended after cpu stop during for erase or write operation.
+                     604                             ; SOURCE LINE # 143
+0090 00              605             NOP     
+0091 00              606             NOP     
+0092 00              607             NOP     
+0093 00              608             NOP     
+0094 00              609             NOP     
+0095                 610     ?C0014:
+                     611     ; 
+                     612     ;               /* Step 3-6. Wait process done */
+                     613     ;               while((FESR & BIT7) == 0x00);
+                     614                             ; SOURCE LINE # 146
+0095 E5ED            615             MOV     A,FESR
+0097 30E7FB          616             JNB     ACC.7,?C0014
+009A                 617     ?C0015:
+                     618     ;               u8Status = RETURN_FLASH_SUCCESS;
+                     619                             ; SOURCE LINE # 147
+009A E4              620             CLR     A
+009B 900000   F      621             MOV     DPTR,#u8Status?146
+009E F0              622             MOVX    @DPTR,A
+                     623     ; #if 0
+                     624     ;               /* Step 3-7. Check written page */
+                     625     ;               FEARL &= ~0x7F;
+                     626     ;               pu8CodeBuf = u16CodeAddr;
+                     627     ;               u16ReadSum = 0;
+                     628     ;               for(ib=0; ib<FLASH_BUFFER_SIZE; ib++)
+                     629     ;               {
+                     630     ;                       u16ReadSum += pu8CodeBuf[ib];
+                     631     ;               }
+                     632     ; 
+                     633     ;               if(u16WriteSum == u16ReadSum)
+                     634     ;               {
+                     635     ;                       u8Status = RETURN_FLASH_SUCCESS;
+                     636     ;                       break;
+                     637     ;               }
+                     638     ;               else
+                     639     ;               {
+                     640     ;                       u8Status = RETURN_FLASH_PAGE_WRITE_FAIL;
+A51 MACRO ASSEMBLER  SUBROUTINE                                                           02/21/2022 13:11:15 PAGE    11
+
+                     641     ;               }
+                     642     ; #endif
+                     643     ;       }
+                     644                             ; SOURCE LINE # 168
+                     645     ;       EA = u8EA;
+                     646                             ; SOURCE LINE # 169
+009F A3              647             INC     DPTR
+00A0 E0              648             MOVX    A,@DPTR
+00A1 24FF            649             ADD     A,#0FFH
+00A3 92AF            650             MOV     EA,C
+                     651     ;       JP_HAL_FlashPageWrite :
+                     652                             ; SOURCE LINE # 170
+00A5                 653     ?_HAL_FlashPageWrite?JP_HAL_FlashPageWrite:
+                     654     ; 
+                     655     ;       /* Step 4. Exit from program mode */
+                     656     ;       FECR = 0x30;
+                     657                             ; SOURCE LINE # 173
+00A5 75EC30          658             MOV     FECR,#030H
+                     659     ; 
+                     660     ;       if(u8Status)
+                     661                             ; SOURCE LINE # 175
+00A8 900000   F      662             MOV     DPTR,#u8Status?146
+00AB E0              663             MOVX    A,@DPTR
+00AC FF              664             MOV     R7,A
+00AD 6001            665             JZ      ?C0016
+                     666     ;       {
+                     667                             ; SOURCE LINE # 176
+                     668     ;               assert_error(FLASH_CODE | u8Status);
+                     669                             ; SOURCE LINE # 177
+00AF 00              670             NOP     
+                     671     ;       }
+                     672                             ; SOURCE LINE # 178
+00B0                 673     ?C0016:
+                     674     ; 
+                     675     ;       return u8Status;
+                     676                             ; SOURCE LINE # 180
+                     677     ; }
+                     678                             ; SOURCE LINE # 181
+00B0                 679     ?C0008:
+00B0 22              680             RET     
+                     681     ; END OF _HAL_FlashPageWrite
+                     682     
+                     683     ; //#ifndef _20_LITE
+                     684     ; /////////////////////////////////////////////////////////////////////////////////////////
+                             //////
+                     685     ; ///   
+                     686     ; ///   Reads flash.
+                     687     ; ///
+                     688     ; ///   @param  u16CodeAddr     : Code address from which flash is read.
+                     689     ; ///   @param  pu8ReadBuf      : Pointer to the buffer in which read flash is stored.
+                     690     ; ///   @param  u16ByteLen      : Number of bytes to read.
+                     691     ; ///   @return unsigned char. Status.
+                     692     ; ///   
+                     693     ; /////////////////////////////////////////////////////////////////////////////////////////
+                             //////
+                     694     ; unsigned char HAL_FlashRead(unsigned int u16CodeAddr, unsigned char* pu8ReadBuf, unsigned
+                              int u16ByteLen)
+                     695     
+----                 696             RSEG  ?PR?_HAL_FlashRead?SUBROUTINE
+0000                 697     _HAL_FlashRead:
+                     698             USING   0
+                     699                             ; SOURCE LINE # 193
+0000 900000   F      700             MOV     DPTR,#u16CodeAddr?248
+0003 EE              701             MOV     A,R6
+0004 F0              702             MOVX    @DPTR,A
+0005 A3              703             INC     DPTR
+A51 MACRO ASSEMBLER  SUBROUTINE                                                           02/21/2022 13:11:15 PAGE    12
+
+0006 EF              704             MOV     A,R7
+0007 F0              705             MOVX    @DPTR,A
+0008 A3              706             INC     DPTR
+0009 EB              707             MOV     A,R3
+000A F0              708             MOVX    @DPTR,A
+000B A3              709             INC     DPTR
+000C EA              710             MOV     A,R2
+000D F0              711             MOVX    @DPTR,A
+000E A3              712             INC     DPTR
+000F E9              713             MOV     A,R1
+0010 F0              714             MOVX    @DPTR,A
+                     715     ; {
+                     716                             ; SOURCE LINE # 194
+                     717     ;       unsigned int    iw;
+                     718     ;       unsigned long   u32LastCodeAddr;
+                     719     ;       unsigned char   code * pu8CodeBuf;
+                     720     ; 
+                     721     ;       unsigned int    u16ReadSum_1 = 0;
+                     722                             ; SOURCE LINE # 199
+0011 E4              723             CLR     A
+0012 900000   F      724             MOV     DPTR,#u16ReadSum_1?254
+0015 F0              725             MOVX    @DPTR,A
+0016 A3              726             INC     DPTR
+0017 F0              727             MOVX    @DPTR,A
+                     728     ;       unsigned int    u16ReadSum_2 = 0;
+                     729                             ; SOURCE LINE # 200
+0018 A3              730             INC     DPTR
+0019 F0              731             MOVX    @DPTR,A
+001A A3              732             INC     DPTR
+001B F0              733             MOVX    @DPTR,A
+                     734     ; 
+                     735     ;       u32LastCodeAddr = u16CodeAddr;
+                     736                             ; SOURCE LINE # 202
+001C 900000   F      737             MOV     DPTR,#u16CodeAddr?248
+001F E0              738             MOVX    A,@DPTR
+0020 FE              739             MOV     R6,A
+0021 A3              740             INC     DPTR
+0022 E0              741             MOVX    A,@DPTR
+0023 FF              742             MOV     R7,A
+0024 E4              743             CLR     A
+0025 FC              744             MOV     R4,A
+0026 FD              745             MOV     R5,A
+0027 900000   F      746             MOV     DPTR,#u32LastCodeAddr?252
+002A 120000   F      747             LCALL   ?C?LSTXDATA
+                     748     ;       u32LastCodeAddr += (u16ByteLen - 1);
+                     749                             ; SOURCE LINE # 203
+002D 900000   F      750             MOV     DPTR,#u32LastCodeAddr?252
+0030 E0              751             MOVX    A,@DPTR
+0031 F8              752             MOV     R0,A
+0032 A3              753             INC     DPTR
+0033 E0              754             MOVX    A,@DPTR
+0034 F9              755             MOV     R1,A
+0035 A3              756             INC     DPTR
+0036 E0              757             MOVX    A,@DPTR
+0037 FA              758             MOV     R2,A
+0038 A3              759             INC     DPTR
+0039 E0              760             MOVX    A,@DPTR
+003A FB              761             MOV     R3,A
+003B 900000   F      762             MOV     DPTR,#u16ByteLen?250+01H
+003E E0              763             MOVX    A,@DPTR
+003F 24FF            764             ADD     A,#0FFH
+0041 FF              765             MOV     R7,A
+0042 900000   F      766             MOV     DPTR,#u16ByteLen?250
+0045 E0              767             MOVX    A,@DPTR
+0046 34FF            768             ADDC    A,#0FFH
+0048 FE              769             MOV     R6,A
+A51 MACRO ASSEMBLER  SUBROUTINE                                                           02/21/2022 13:11:15 PAGE    13
+
+0049 E4              770             CLR     A
+004A FC              771             MOV     R4,A
+004B FD              772             MOV     R5,A
+004C EB              773             MOV     A,R3
+004D 2F              774             ADD     A,R7
+004E FF              775             MOV     R7,A
+004F EA              776             MOV     A,R2
+0050 3E              777             ADDC    A,R6
+0051 FE              778             MOV     R6,A
+0052 ED              779             MOV     A,R5
+0053 39              780             ADDC    A,R1
+0054 FD              781             MOV     R5,A
+0055 EC              782             MOV     A,R4
+0056 38              783             ADDC    A,R0
+0057 FC              784             MOV     R4,A
+0058 900000   F      785             MOV     DPTR,#u32LastCodeAddr?252
+005B 120000   F      786             LCALL   ?C?LSTXDATA
+                     787     ; 
+                     788     ;       if(u32LastCodeAddr & 0xFFFF0000)
+                     789                             ; SOURCE LINE # 205
+005E 900000   F      790             MOV     DPTR,#u32LastCodeAddr?252
+0061 E0              791             MOVX    A,@DPTR
+0062 FC              792             MOV     R4,A
+0063 A3              793             INC     DPTR
+0064 E0              794             MOVX    A,@DPTR
+0065 FD              795             MOV     R5,A
+0066 EC              796             MOV     A,R4
+0067 4D              797             ORL     A,R5
+0068 6004            798             JZ      ?C0017
+                     799     ;       {
+                     800                             ; SOURCE LINE # 206
+                     801     ;               assert_error(FLASH_CODE | RETURN_FLASH_INVALID_ADDRESS);
+                     802                             ; SOURCE LINE # 207
+006A 00              803             NOP     
+                     804     ;               return RETURN_FLASH_INVALID_ADDRESS;
+                     805                             ; SOURCE LINE # 208
+006B 7F12            806             MOV     R7,#012H
+006D 22              807             RET     
+                     808     ;       }
+                     809                             ; SOURCE LINE # 209
+006E                 810     ?C0017:
+                     811     ; 
+                     812     ;       pu8CodeBuf = u16CodeAddr;
+                     813                             ; SOURCE LINE # 211
+006E 900000   F      814             MOV     DPTR,#u16CodeAddr?248
+0071 E0              815             MOVX    A,@DPTR
+0072 FF              816             MOV     R7,A
+0073 A3              817             INC     DPTR
+0074 E0              818             MOVX    A,@DPTR
+0075 900000   F      819             MOV     DPTR,#pu8CodeBuf?253
+0078 CF              820             XCH     A,R7
+0079 F0              821             MOVX    @DPTR,A
+007A A3              822             INC     DPTR
+007B EF              823             MOV     A,R7
+007C F0              824             MOVX    @DPTR,A
+                     825     ;       for(iw=0 ; iw<u16ByteLen; iw++)
+                     826                             ; SOURCE LINE # 212
+007D E4              827             CLR     A
+007E 900000   F      828             MOV     DPTR,#iw?251
+0081 F0              829             MOVX    @DPTR,A
+0082 A3              830             INC     DPTR
+0083 F0              831             MOVX    @DPTR,A
+0084                 832     ?C0019:
+0084 900000   F      833             MOV     DPTR,#u16ByteLen?250
+0087 E0              834             MOVX    A,@DPTR
+0088 FE              835             MOV     R6,A
+A51 MACRO ASSEMBLER  SUBROUTINE                                                           02/21/2022 13:11:15 PAGE    14
+
+0089 A3              836             INC     DPTR
+008A E0              837             MOVX    A,@DPTR
+008B FF              838             MOV     R7,A
+008C A3              839             INC     DPTR
+008D E0              840             MOVX    A,@DPTR
+008E FC              841             MOV     R4,A
+008F A3              842             INC     DPTR
+0090 E0              843             MOVX    A,@DPTR
+0091 FD              844             MOV     R5,A
+0092 C3              845             CLR     C
+0093 9F              846             SUBB    A,R7
+0094 EC              847             MOV     A,R4
+0095 9E              848             SUBB    A,R6
+0096 5047            849             JNC     ?C0020
+                     850     ;       {
+                     851                             ; SOURCE LINE # 213
+                     852     ;               u16ReadSum_1 += pu8ReadBuf[iw] = pu8CodeBuf[iw];
+                     853                             ; SOURCE LINE # 214
+0098 900000   F      854             MOV     DPTR,#pu8CodeBuf?253
+009B E0              855             MOVX    A,@DPTR
+009C FE              856             MOV     R6,A
+009D A3              857             INC     DPTR
+009E E0              858             MOVX    A,@DPTR
+009F 2D              859             ADD     A,R5
+00A0 F582            860             MOV     DPL,A
+00A2 EE              861             MOV     A,R6
+00A3 3C              862             ADDC    A,R4
+00A4 F583            863             MOV     DPH,A
+00A6 E4              864             CLR     A
+00A7 93              865             MOVC    A,@A+DPTR
+00A8 FF              866             MOV     R7,A
+00A9 900000   F      867             MOV     DPTR,#pu8ReadBuf?249
+00AC E0              868             MOVX    A,@DPTR
+00AD FB              869             MOV     R3,A
+00AE A3              870             INC     DPTR
+00AF E0              871             MOVX    A,@DPTR
+00B0 FA              872             MOV     R2,A
+00B1 A3              873             INC     DPTR
+00B2 E0              874             MOVX    A,@DPTR
+00B3 F9              875             MOV     R1,A
+00B4 900000   F      876             MOV     DPTR,#iw?251
+00B7 A3              877             INC     DPTR
+00B8 E0              878             MOVX    A,@DPTR
+00B9 F582            879             MOV     DPL,A
+00BB 8C83            880             MOV     DPH,R4
+00BD EF              881             MOV     A,R7
+00BE 120000   F      882             LCALL   ?C?CSTOPTR
+00C1 FF              883             MOV     R7,A
+00C2 900000   F      884             MOV     DPTR,#u16ReadSum_1?254+01H
+00C5 E0              885             MOVX    A,@DPTR
+00C6 2F              886             ADD     A,R7
+00C7 F0              887             MOVX    @DPTR,A
+00C8 900000   F      888             MOV     DPTR,#u16ReadSum_1?254
+00CB E0              889             MOVX    A,@DPTR
+00CC 3400            890             ADDC    A,#00H
+00CE F0              891             MOVX    @DPTR,A
+                     892     ;       }
+                     893                             ; SOURCE LINE # 215
+00CF 900000   F      894             MOV     DPTR,#iw?251+01H
+00D2 E0              895             MOVX    A,@DPTR
+00D3 04              896             INC     A
+00D4 F0              897             MOVX    @DPTR,A
+00D5 7006            898             JNZ     ?C0035
+00D7 900000   F      899             MOV     DPTR,#iw?251
+00DA E0              900             MOVX    A,@DPTR
+00DB 04              901             INC     A
+A51 MACRO ASSEMBLER  SUBROUTINE                                                           02/21/2022 13:11:15 PAGE    15
+
+00DC F0              902             MOVX    @DPTR,A
+00DD                 903     ?C0035:
+00DD 80A5            904             SJMP    ?C0019
+00DF                 905     ?C0020:
+                     906     ; 
+                     907     ;       // Check-Sum
+                     908     ;       for(iw=0 ; iw<u16ByteLen ; iw++)
+                     909                             ; SOURCE LINE # 218
+00DF E4              910             CLR     A
+00E0 900000   F      911             MOV     DPTR,#iw?251
+00E3 F0              912             MOVX    @DPTR,A
+00E4 A3              913             INC     DPTR
+00E5 F0              914             MOVX    @DPTR,A
+00E6                 915     ?C0022:
+00E6 900000   F      916             MOV     DPTR,#u16ByteLen?250
+00E9 E0              917             MOVX    A,@DPTR
+00EA FE              918             MOV     R6,A
+00EB A3              919             INC     DPTR
+00EC E0              920             MOVX    A,@DPTR
+00ED FF              921             MOV     R7,A
+00EE A3              922             INC     DPTR
+00EF E0              923             MOVX    A,@DPTR
+00F0 FC              924             MOV     R4,A
+00F1 A3              925             INC     DPTR
+00F2 E0              926             MOVX    A,@DPTR
+00F3 FD              927             MOV     R5,A
+00F4 C3              928             CLR     C
+00F5 9F              929             SUBB    A,R7
+00F6 EC              930             MOV     A,R4
+00F7 9E              931             SUBB    A,R6
+00F8 5030            932             JNC     ?C0023
+                     933     ;       {
+                     934                             ; SOURCE LINE # 219
+                     935     ;               u16ReadSum_2 += pu8ReadBuf[iw];
+                     936                             ; SOURCE LINE # 220
+00FA 900000   F      937             MOV     DPTR,#pu8ReadBuf?249
+00FD E0              938             MOVX    A,@DPTR
+00FE FB              939             MOV     R3,A
+00FF A3              940             INC     DPTR
+0100 E0              941             MOVX    A,@DPTR
+0101 FA              942             MOV     R2,A
+0102 A3              943             INC     DPTR
+0103 E0              944             MOVX    A,@DPTR
+0104 F9              945             MOV     R1,A
+0105 8D82            946             MOV     DPL,R5
+0107 8C83            947             MOV     DPH,R4
+0109 120000   F      948             LCALL   ?C?CLDOPTR
+010C FF              949             MOV     R7,A
+010D 900000   F      950             MOV     DPTR,#u16ReadSum_2?255+01H
+0110 E0              951             MOVX    A,@DPTR
+0111 2F              952             ADD     A,R7
+0112 F0              953             MOVX    @DPTR,A
+0113 900000   F      954             MOV     DPTR,#u16ReadSum_2?255
+0116 E0              955             MOVX    A,@DPTR
+0117 3400            956             ADDC    A,#00H
+0119 F0              957             MOVX    @DPTR,A
+                     958     ;       }
+                     959                             ; SOURCE LINE # 221
+011A 900000   F      960             MOV     DPTR,#iw?251+01H
+011D E0              961             MOVX    A,@DPTR
+011E 04              962             INC     A
+011F F0              963             MOVX    @DPTR,A
+0120 7006            964             JNZ     ?C0036
+0122 900000   F      965             MOV     DPTR,#iw?251
+0125 E0              966             MOVX    A,@DPTR
+0126 04              967             INC     A
+A51 MACRO ASSEMBLER  SUBROUTINE                                                           02/21/2022 13:11:15 PAGE    16
+
+0127 F0              968             MOVX    @DPTR,A
+0128                 969     ?C0036:
+0128 80BC            970             SJMP    ?C0022
+012A                 971     ?C0023:
+                     972     ;       
+                     973     ;       // Compare Check-Sum & Return result
+                     974     ;       if(u16ReadSum_1 == u16ReadSum_2)
+                     975                             ; SOURCE LINE # 224
+012A 900000   F      976             MOV     DPTR,#u16ReadSum_2?255
+012D E0              977             MOVX    A,@DPTR
+012E FE              978             MOV     R6,A
+012F A3              979             INC     DPTR
+0130 E0              980             MOVX    A,@DPTR
+0131 FF              981             MOV     R7,A
+0132 900000   F      982             MOV     DPTR,#u16ReadSum_1?254
+0135 E0              983             MOVX    A,@DPTR
+0136 B50608          984             CJNE    A,AR6,?C0025
+0139 A3              985             INC     DPTR
+013A E0              986             MOVX    A,@DPTR
+013B B50703          987             CJNE    A,AR7,?C0025
+                     988     ;       {
+                     989                             ; SOURCE LINE # 225
+                     990     ;               return RETURN_FLASH_SUCCESS;
+                     991                             ; SOURCE LINE # 226
+013E 7F00            992             MOV     R7,#00H
+0140 22              993             RET     
+                     994     ;       }
+                     995                             ; SOURCE LINE # 227
+0141                 996     ?C0025:
+                     997     ;       else
+                     998     ;       {
+                     999                             ; SOURCE LINE # 229
+                    1000     ;               return RETURN_FLASH_PAGE_READ_FAIL;
+                    1001                             ; SOURCE LINE # 230
+0141 7F16           1002             MOV     R7,#016H
+                    1003     ;       }
+                    1004                             ; SOURCE LINE # 231
+                    1005     ; }
+                    1006                             ; SOURCE LINE # 232
+0143                1007     ?C0018:
+0143 22             1008             RET     
+                    1009     ; END OF _HAL_FlashRead
+                    1010     
+                    1011     ; 
+                    1012     ; /////////////////////////////////////////////////////////////////////////////////////////
+                             //////
+                    1013     ; ///   
+                    1014     ; ///   Global variable which indicates the number of TIMER0's ticks before watchdog reset.
+                    1015     ; ///   
+                    1016     ; /////////////////////////////////////////////////////////////////////////////////////////
+                             //////
+                    1017     ; unsigned int  gu16WdtResetTick;
+                    1018     ; 
+                    1019     ; /////////////////////////////////////////////////////////////////////////////////////////
+                             //////
+                    1020     ; ///   
+                    1021     ; /// Sets watchdog timer.
+                    1022     ; ///
+                    1023     ; ///   @param  u8Ena           : 0=Disable, 1=Enable.
+                    1024     ; ///   @param  u8ResetDur      : 43.7ms * u8ResetDur(@ 12MHz)
+                    1025     ; ///   @return UINT8. Status.
+                    1026     ; ///   
+                    1027     ; /////////////////////////////////////////////////////////////////////////////////////////
+                             //////
+                    1028     ; void MC96_WdtSet(unsigned char u8Ena, unsigned char u8ResetDur)
+                    1029     
+A51 MACRO ASSEMBLER  SUBROUTINE                                                           02/21/2022 13:11:15 PAGE    17
+
+----                1030             RSEG  ?PR?_MC96_WdtSet?SUBROUTINE
+0000                1031     _MC96_WdtSet:
+                    1032             USING   0
+                    1033                             ; SOURCE LINE # 250
+                    1034     ;---- Variable 'u8ResetDur?357' assigned to Register 'R5' ----
+                    1035     ;---- Variable 'u8Ena?356' assigned to Register 'R7' ----
+                    1036     ; {
+                    1037                             ; SOURCE LINE # 251
+                    1038     ;       unsigned char   u8EA;
+                    1039     ; 
+                    1040     ;       u8EA = EA;
+                    1041                             ; SOURCE LINE # 254
+0000 A2AF           1042             MOV     C,EA
+0002 E4             1043             CLR     A
+0003 33             1044             RLC     A
+0004 FE             1045             MOV     R6,A
+                    1046     ;---- Variable 'u8EA?358' assigned to Register 'R6' ----
+                    1047     ;       EA = 0;
+                    1048                             ; SOURCE LINE # 255
+0005 C2AF           1049             CLR     EA
+                    1050     ; 
+                    1051     ;       WDTMR &= ~BIT7;
+                    1052                             ; SOURCE LINE # 257
+0007 538D7F         1053             ANL     WDTMR,#07FH
+                    1054     ; 
+                    1055     ;       if(u8Ena)
+                    1056                             ; SOURCE LINE # 259
+000A EF             1057             MOV     A,R7
+000B 6007           1058             JZ      ?C0027
+                    1059     ;       {
+                    1060                             ; SOURCE LINE # 260
+                    1061     ;               WDTR = u8ResetDur;
+                    1062                             ; SOURCE LINE # 261
+000D AF05           1063             MOV     R7,AR5
+000F 8F8E           1064             MOV     WDTR,R7
+                    1065     ;               WDTMR |= (BIT7|BIT5);
+                    1066                             ; SOURCE LINE # 262
+0011 438DA0         1067             ORL     WDTMR,#0A0H
+                    1068     ;       }
+                    1069                             ; SOURCE LINE # 263
+0014                1070     ?C0027:
+                    1071     ; 
+                    1072     ;       EA = u8EA;
+                    1073                             ; SOURCE LINE # 265
+0014 AF06           1074             MOV     R7,AR6
+0016 EE             1075             MOV     A,R6
+0017 24FF           1076             ADD     A,#0FFH
+0019 92AF           1077             MOV     EA,C
+                    1078     ; }
+                    1079                             ; SOURCE LINE # 266
+001B 22             1080             RET     
+                    1081     ; END OF _MC96_WdtSet
+                    1082     
+                    1083     ; 
+                    1084     ; void SYS_WdtSet(unsigned int u16Timer0Tick)
+                    1085     
+----                1086             RSEG  ?PR?_SYS_WdtSet?SUBROUTINE
+0000                1087     _SYS_WdtSet:
+                    1088             USING   0
+                    1089                             ; SOURCE LINE # 268
+                    1090     ;---- Variable 'u16Timer0Tick?459' assigned to Register 'R6/R7' ----
+                    1091     ; {
+                    1092                             ; SOURCE LINE # 269
+                    1093     ;       unsigned char   u8EA;
+                    1094     ; 
+                    1095     ;       u8EA = EA;
+A51 MACRO ASSEMBLER  SUBROUTINE                                                           02/21/2022 13:11:15 PAGE    18
+
+                    1096                             ; SOURCE LINE # 272
+0000 A2AF           1097             MOV     C,EA
+0002 E4             1098             CLR     A
+0003 33             1099             RLC     A
+                    1100     ;---- Variable 'u8EA?460' assigned to Register 'R4' ----
+0004 FC             1101             MOV     R4,A
+                    1102     ;       EA = 0;
+                    1103                             ; SOURCE LINE # 273
+0005 C2AF           1104             CLR     EA
+                    1105     ; 
+                    1106     ;       if(u16Timer0Tick)       // WDT enable
+                    1107                             ; SOURCE LINE # 275
+0007 EF             1108             MOV     A,R7
+0008 4E             1109             ORL     A,R6
+0009 600E           1110             JZ      ?C0029
+                    1111     ;       {
+                    1112                             ; SOURCE LINE # 276
+                    1113     ;               gu16WdtResetTick = u16Timer0Tick;
+                    1114                             ; SOURCE LINE # 277
+000B 900000   F     1115             MOV     DPTR,#gu16WdtResetTick
+000E EE             1116             MOV     A,R6
+000F F0             1117             MOVX    @DPTR,A
+0010 A3             1118             INC     DPTR
+0011 EF             1119             MOV     A,R7
+0012 F0             1120             MOVX    @DPTR,A
+                    1121     ;               MC96_WdtSet(1, 30);             // 43.7ms * 30 = 1Sec(@ 12MHz)
+                    1122                             ; SOURCE LINE # 278
+0013 7D1E           1123             MOV     R5,#01EH
+0015 7F01           1124             MOV     R7,#01H
+                    1125     ;       } 
+                    1126                             ; SOURCE LINE # 279
+0017 8009           1127             SJMP    ?C0038
+0019                1128     ?C0029:
+                    1129     ;       else                                    // WDT disable
+                    1130     ;       {
+                    1131                             ; SOURCE LINE # 281
+                    1132     ;               gu16WdtResetTick = 0;
+                    1133                             ; SOURCE LINE # 282
+0019 E4             1134             CLR     A
+001A 900000   F     1135             MOV     DPTR,#gu16WdtResetTick
+001D F0             1136             MOVX    @DPTR,A
+001E A3             1137             INC     DPTR
+001F F0             1138             MOVX    @DPTR,A
+                    1139     ;               MC96_WdtSet(0, 0);
+                    1140                             ; SOURCE LINE # 283
+0020 FD             1141             MOV     R5,A
+0021 FF             1142             MOV     R7,A
+0022                1143     ?C0038:
+0022 120000   F     1144             LCALL   _MC96_WdtSet
+                    1145     ;       }
+                    1146                             ; SOURCE LINE # 284
+0025                1147     ?C0030:
+                    1148     ; 
+                    1149     ;       EA = u8EA;
+                    1150                             ; SOURCE LINE # 286
+0025 AF04           1151             MOV     R7,AR4
+0027 EC             1152             MOV     A,R4
+0028 24FF           1153             ADD     A,#0FFH
+002A 92AF           1154             MOV     EA,C
+                    1155     ; }
+                    1156                             ; SOURCE LINE # 287
+002C 22             1157             RET     
+                    1158     ; END OF _SYS_WdtSet
+                    1159     
+                    1160     ; /////////////////////////////////////////////////////////////////////////////////////////
+                             //////
+A51 MACRO ASSEMBLER  SUBROUTINE                                                           02/21/2022 13:11:15 PAGE    19
+
+                    1161     ; ///   
+                    1162     ; /// Restarts watchdog timer to prevent watchdog timeout.
+                    1163     ; ///
+                    1164     ; ///   @param  void
+                    1165     ; ///   @return void
+                    1166     ; ///   
+                    1167     ; /////////////////////////////////////////////////////////////////////////////////////////
+                             //////
+                    1168     ; void MC96_WdtRestart(void) large reentrant
+                    1169     
+----                1170             RSEG  ?PR?_?MC96_WdtRestart?SUBROUTINE
+0000                1171     _?MC96_WdtRestart:
+                    1172                             ; SOURCE LINE # 296
+                    1173     ; {
+                    1174     ;       WDTMR |= BIT5;
+                    1175                             ; SOURCE LINE # 298
+0000 438D20         1176             ORL     WDTMR,#020H
+                    1177     ; }
+                    1178                             ; SOURCE LINE # 299
+0003 22             1179             RET     
+                    1180     ; END OF _?MC96_WdtRestart
+                    1181     
+----                1182     CSEG    AT      000ABH
+00AB 020000   F     1183             LJMP    INT_PCI0
+                    1184     
+                    1185     ; 
+                    1186     ; 
+                    1187     ; 
+                    1188     ;  //======================================================
+                    1189     ; // interrupt routines
+                    1190     ; //======================================================
+                    1191     ; 
+                    1192     ; 
+                    1193     ; void INT_PCI0() interrupt 21
+                    1194     
+----                1195             RSEG  ?PR?INT_PCI0?SUBROUTINE
+                    1196             USING   0
+0000                1197     INT_PCI0:
+                    1198                             ; SOURCE LINE # 308
+                    1199     ; {
+                    1200     ;       // Pin change interrupt (P0)
+                    1201     ;       // TODO: add your code here
+                    1202     ; }
+                    1203                             ; SOURCE LINE # 312
+0000 32             1204             RETI    
+                    1205     ; END OF INT_PCI0
+                    1206     
+                    1207             END
+A51 MACRO ASSEMBLER  SUBROUTINE                                                           02/21/2022 13:11:15 PAGE    20
+
+SYMBOL TABLE LISTING
+------ ----- -------
+
+
+N A M E                                    T Y P E  V A L U E   ATTRIBUTES
+
+?C0001. . . . . . . . . . . . . . . . .    C ADDR   0011H   R   SEG=?PR?_HAL_FLASHPAGEERASE?SUBROUTINE
+?C0002. . . . . . . . . . . . . . . . .    C ADDR   001BH   R   SEG=?PR?_HAL_FLASHPAGEERASE?SUBROUTINE
+?C0004. . . . . . . . . . . . . . . . .    C ADDR   0037H   R   SEG=?PR?_HAL_FLASHPAGEERASE?SUBROUTINE
+?C0005. . . . . . . . . . . . . . . . .    C ADDR   003CH   R   SEG=?PR?_HAL_FLASHPAGEERASE?SUBROUTINE
+?C0006. . . . . . . . . . . . . . . . .    C ADDR   003CH   R   SEG=?PR?_HAL_FLASHPAGEERASE?SUBROUTINE
+?C0007. . . . . . . . . . . . . . . . .    C ADDR   001BH   R   SEG=?PR?_HAL_FLASHPAGEWRITE?SUBROUTINE
+?C0008. . . . . . . . . . . . . . . . .    C ADDR   00B0H   R   SEG=?PR?_HAL_FLASHPAGEWRITE?SUBROUTINE
+?C0009. . . . . . . . . . . . . . . . .    C ADDR   0049H   R   SEG=?PR?_HAL_FLASHPAGEWRITE?SUBROUTINE
+?C0011. . . . . . . . . . . . . . . . .    C ADDR   0051H   R   SEG=?PR?_HAL_FLASHPAGEWRITE?SUBROUTINE
+?C0012. . . . . . . . . . . . . . . . .    C ADDR   0076H   R   SEG=?PR?_HAL_FLASHPAGEWRITE?SUBROUTINE
+?C0014. . . . . . . . . . . . . . . . .    C ADDR   0095H   R   SEG=?PR?_HAL_FLASHPAGEWRITE?SUBROUTINE
+?C0015. . . . . . . . . . . . . . . . .    C ADDR   009AH   R   SEG=?PR?_HAL_FLASHPAGEWRITE?SUBROUTINE
+?C0016. . . . . . . . . . . . . . . . .    C ADDR   00B0H   R   SEG=?PR?_HAL_FLASHPAGEWRITE?SUBROUTINE
+?C0017. . . . . . . . . . . . . . . . .    C ADDR   006EH   R   SEG=?PR?_HAL_FLASHREAD?SUBROUTINE
+?C0018. . . . . . . . . . . . . . . . .    C ADDR   0143H   R   SEG=?PR?_HAL_FLASHREAD?SUBROUTINE
+?C0019. . . . . . . . . . . . . . . . .    C ADDR   0084H   R   SEG=?PR?_HAL_FLASHREAD?SUBROUTINE
+?C0020. . . . . . . . . . . . . . . . .    C ADDR   00DFH   R   SEG=?PR?_HAL_FLASHREAD?SUBROUTINE
+?C0022. . . . . . . . . . . . . . . . .    C ADDR   00E6H   R   SEG=?PR?_HAL_FLASHREAD?SUBROUTINE
+?C0023. . . . . . . . . . . . . . . . .    C ADDR   012AH   R   SEG=?PR?_HAL_FLASHREAD?SUBROUTINE
+?C0025. . . . . . . . . . . . . . . . .    C ADDR   0141H   R   SEG=?PR?_HAL_FLASHREAD?SUBROUTINE
+?C0027. . . . . . . . . . . . . . . . .    C ADDR   0014H   R   SEG=?PR?_MC96_WDTSET?SUBROUTINE
+?C0029. . . . . . . . . . . . . . . . .    C ADDR   0019H   R   SEG=?PR?_SYS_WDTSET?SUBROUTINE
+?C0030. . . . . . . . . . . . . . . . .    C ADDR   0025H   R   SEG=?PR?_SYS_WDTSET?SUBROUTINE
+?C0034. . . . . . . . . . . . . . . . .    C ADDR   0017H   R   SEG=?PR?_HAL_FLASHPAGEERASE?SUBROUTINE
+?C0035. . . . . . . . . . . . . . . . .    C ADDR   00DDH   R   SEG=?PR?_HAL_FLASHREAD?SUBROUTINE
+?C0036. . . . . . . . . . . . . . . . .    C ADDR   0128H   R   SEG=?PR?_HAL_FLASHREAD?SUBROUTINE
+?C0038. . . . . . . . . . . . . . . . .    C ADDR   0022H   R   SEG=?PR?_SYS_WDTSET?SUBROUTINE
+?C?CLDOPTR. . . . . . . . . . . . . . .    C ADDR   -----       EXT
+?C?CSTOPTR. . . . . . . . . . . . . . .    C ADDR   -----       EXT
+?C?LSTXDATA . . . . . . . . . . . . . .    C ADDR   -----       EXT
+?C_INITSEG. . . . . . . . . . . . . . .    C SEG    000FH       REL=UNIT
+?PR?INT_PCI0?SUBROUTINE . . . . . . . .    C SEG    0001H       REL=INBLOCK
+?PR?_?MC96_WDTRESTART?SUBROUTINE. . . .    C SEG    0004H       REL=INBLOCK
+?PR?_HAL_FLASHPAGEERASE?SUBROUTINE. . .    C SEG    003DH       REL=INBLOCK
+?PR?_HAL_FLASHPAGEWRITE?SUBROUTINE. . .    C SEG    00B1H       REL=INBLOCK
+?PR?_HAL_FLASHREAD?SUBROUTINE . . . . .    C SEG    0144H       REL=INBLOCK
+?PR?_MC96_WDTSET?SUBROUTINE . . . . . .    C SEG    001CH       REL=INBLOCK
+?PR?_SYS_WDTSET?SUBROUTINE. . . . . . .    C SEG    002DH       REL=INBLOCK
+?XD?SUBROUTINE. . . . . . . . . . . . .    X SEG    0008H       REL=UNIT
+?XD?_HAL_FLASHPAGEERASE?SUBROUTINE. . .    X SEG    0002H       REL=UNIT
+?XD?_HAL_FLASHPAGEWRITE?SUBROUTINE. . .    X SEG    0008H       REL=UNIT
+?XD?_HAL_FLASHREAD?SUBROUTINE . . . . .    X SEG    0013H       REL=UNIT
+?_HAL_FLASHPAGEERASE?BYTE . . . . . . .    X ADDR   0000H   R   SEG=?XD?_HAL_FLASHPAGEERASE?SUBROUTINE
+?_HAL_FLASHPAGEWRITE?BYTE . . . . . . .    X ADDR   0000H   R   SEG=?XD?_HAL_FLASHPAGEWRITE?SUBROUTINE
+?_HAL_FLASHPAGEWRITE?JP_HAL_FLASHPAGEWRITE C ADDR   00A5H   R   SEG=?PR?_HAL_FLASHPAGEWRITE?SUBROUTINE
+?_HAL_FLASHREAD?BYTE. . . . . . . . . .    X ADDR   0000H   R   SEG=?XD?_HAL_FLASHREAD?SUBROUTINE
+ACC . . . . . . . . . . . . . . . . . .    D ADDR   00E0H   A   
+AR4 . . . . . . . . . . . . . . . . . .    D ADDR   0004H   A   
+AR5 . . . . . . . . . . . . . . . . . .    D ADDR   0005H   A   
+AR6 . . . . . . . . . . . . . . . . . .    D ADDR   0006H   A   
+AR7 . . . . . . . . . . . . . . . . . .    D ADDR   0007H   A   
+BCCR. . . . . . . . . . . . . . . . . .    D ADDR   008BH   A   
+BITR. . . . . . . . . . . . . . . . . .    D ADDR   008CH   A   
+BODR. . . . . . . . . . . . . . . . . .    D ADDR   0086H   A   
+BODSR . . . . . . . . . . . . . . . . .    D ADDR   008FH   A   
+CDR0. . . . . . . . . . . . . . . . . .    D ADDR   00B3H   A   
+CDR1. . . . . . . . . . . . . . . . . .    D ADDR   00B6H   A   
+CDR2H . . . . . . . . . . . . . . . . .    D ADDR   00C7H   A   
+CDR2L . . . . . . . . . . . . . . . . .    D ADDR   00CFH   A   
+CDR3H . . . . . . . . . . . . . . . . .    D ADDR   00CCH   A   
+A51 MACRO ASSEMBLER  SUBROUTINE                                                           02/21/2022 13:11:15 PAGE    21
+
+CDR3L . . . . . . . . . . . . . . . . .    D ADDR   00CBH   A   
+CFGCR . . . . . . . . . . . . . . . . .    D ADDR   00F9H   A   
+CFHS. . . . . . . . . . . . . . . . . .    D ADDR   00BBH   A   
+CFLS. . . . . . . . . . . . . . . . . .    D ADDR   00BCH   A   
+DPH . . . . . . . . . . . . . . . . . .    D ADDR   0083H   A   
+DPL . . . . . . . . . . . . . . . . . .    D ADDR   0082H   A   
+EA. . . . . . . . . . . . . . . . . . .    B ADDR   00A8H.7 A   
+EIEDGE0 . . . . . . . . . . . . . . . .    D ADDR   00ADH   A   
+EIEDGE1 . . . . . . . . . . . . . . . .    D ADDR   00AEH   A   
+EIENAB. . . . . . . . . . . . . . . . .    D ADDR   00B1H   A   
+EIFLAG. . . . . . . . . . . . . . . . .    D ADDR   00ACH   A   
+EIPOLA. . . . . . . . . . . . . . . . .    D ADDR   00AFH   A   
+FEARH . . . . . . . . . . . . . . . . .    D ADDR   00E9H   A   
+FEARL . . . . . . . . . . . . . . . . .    D ADDR   00EBH   A   
+FEARM . . . . . . . . . . . . . . . . .    D ADDR   00EAH   A   
+FECR. . . . . . . . . . . . . . . . . .    D ADDR   00ECH   A   
+FEMR. . . . . . . . . . . . . . . . . .    D ADDR   00E1H   A   
+FESR. . . . . . . . . . . . . . . . . .    D ADDR   00EDH   A   
+FETCR . . . . . . . . . . . . . . . . .    D ADDR   00EEH   A   
+FLASH_PROGRAM_MODE_ENTRY. . . . . . . .    C ADDR   -----       EXT
+GU16HALTIMER. . . . . . . . . . . . . .    X ADDR   0002H   R   SEG=?XD?SUBROUTINE
+GU16HALTIMERT1. . . . . . . . . . . . .    X ADDR   0004H   R   SEG=?XD?SUBROUTINE
+GU16HALTIMERT2. . . . . . . . . . . . .    X ADDR   0006H   R   SEG=?XD?SUBROUTINE
+GU16WDTRESETTICK. . . . . . . . . . . .    X ADDR   0000H   R   SEG=?XD?SUBROUTINE
+GU8FLASHPAGEBUFFER. . . . . . . . . . .    X ADDR   8000H   A   
+I2CCR . . . . . . . . . . . . . . . . .    D ADDR   009CH   A   
+I2CDR . . . . . . . . . . . . . . . . .    D ADDR   00A5H   A   
+I2CSAR. . . . . . . . . . . . . . . . .    D ADDR   00A6H   A   
+I2CSAR1 . . . . . . . . . . . . . . . .    D ADDR   00A7H   A   
+I2CSCLHR. . . . . . . . . . . . . . . .    D ADDR   009FH   A   
+I2CSCLLR. . . . . . . . . . . . . . . .    D ADDR   009EH   A   
+I2CSDHR . . . . . . . . . . . . . . . .    D ADDR   00A3H   A   
+I2CSR . . . . . . . . . . . . . . . . .    D ADDR   009DH   A   
+IE. . . . . . . . . . . . . . . . . . .    D ADDR   00A8H   A   
+IE1 . . . . . . . . . . . . . . . . . .    D ADDR   00A9H   A   
+IE2 . . . . . . . . . . . . . . . . . .    D ADDR   00AAH   A   
+IE3 . . . . . . . . . . . . . . . . . .    D ADDR   00ABH   A   
+IEN0. . . . . . . . . . . . . . . . . .    D ADDR   00A8H   A   
+IEN1. . . . . . . . . . . . . . . . . .    D ADDR   00A9H   A   
+IEN2. . . . . . . . . . . . . . . . . .    D ADDR   00AAH   A   
+IEN3. . . . . . . . . . . . . . . . . .    D ADDR   00ABH   A   
+INT_PCI0. . . . . . . . . . . . . . . .    C ADDR   0000H   R   SEG=?PR?INT_PCI0?SUBROUTINE
+IRCC0 . . . . . . . . . . . . . . . . .    D ADDR   00DDH   A   
+IRCC1 . . . . . . . . . . . . . . . . .    D ADDR   00DEH   A   
+IRCC2 . . . . . . . . . . . . . . . . .    D ADDR   00DFH   A   
+IRCC3 . . . . . . . . . . . . . . . . .    D ADDR   00DAH   A   
+IRCC4 . . . . . . . . . . . . . . . . .    D ADDR   00DBH   A   
+IW?251. . . . . . . . . . . . . . . . .    X ADDR   0007H   R   SEG=?XD?_HAL_FLASHREAD?SUBROUTINE
+KITSR . . . . . . . . . . . . . . . . .    D ADDR   00F7H   A   
+MCCR. . . . . . . . . . . . . . . . . .    D ADDR   00EFH   A   
+MCRC_CTRL . . . . . . . . . . . . . . .    D ADDR   00A1H   A   
+MCRC_DATA0. . . . . . . . . . . . . . .    D ADDR   0099H   A   
+MCRC_DATA1. . . . . . . . . . . . . . .    D ADDR   009AH   A   
+NCCR. . . . . . . . . . . . . . . . . .    D ADDR   0089H   A   
+P0. . . . . . . . . . . . . . . . . . .    D ADDR   0080H   A   
+P00 . . . . . . . . . . . . . . . . . .    B ADDR   0080H.0 A   
+P01 . . . . . . . . . . . . . . . . . .    B ADDR   0080H.1 A   
+P02 . . . . . . . . . . . . . . . . . .    B ADDR   0080H.2 A   
+P03 . . . . . . . . . . . . . . . . . .    B ADDR   0080H.3 A   
+P04 . . . . . . . . . . . . . . . . . .    B ADDR   0080H.4 A   
+P05 . . . . . . . . . . . . . . . . . .    B ADDR   0080H.5 A   
+P06 . . . . . . . . . . . . . . . . . .    B ADDR   0080H.6 A   
+P07 . . . . . . . . . . . . . . . . . .    B ADDR   0080H.7 A   
+P0IO. . . . . . . . . . . . . . . . . .    D ADDR   0098H   A   
+P0PC. . . . . . . . . . . . . . . . . .    D ADDR   00C1H   A   
+P1. . . . . . . . . . . . . . . . . . .    D ADDR   0088H   A   
+A51 MACRO ASSEMBLER  SUBROUTINE                                                           02/21/2022 13:11:15 PAGE    22
+
+P10 . . . . . . . . . . . . . . . . . .    B ADDR   0088H.0 A   
+P11 . . . . . . . . . . . . . . . . . .    B ADDR   0088H.1 A   
+P12 . . . . . . . . . . . . . . . . . .    B ADDR   0088H.2 A   
+P13 . . . . . . . . . . . . . . . . . .    B ADDR   0088H.3 A   
+P14 . . . . . . . . . . . . . . . . . .    B ADDR   0088H.4 A   
+P15 . . . . . . . . . . . . . . . . . .    B ADDR   0088H.5 A   
+P16 . . . . . . . . . . . . . . . . . .    B ADDR   0088H.6 A   
+P17 . . . . . . . . . . . . . . . . . .    B ADDR   0088H.7 A   
+P1IO. . . . . . . . . . . . . . . . . .    D ADDR   00A0H   A   
+P2. . . . . . . . . . . . . . . . . . .    D ADDR   0090H   A   
+P20 . . . . . . . . . . . . . . . . . .    B ADDR   0090H.0 A   
+P21 . . . . . . . . . . . . . . . . . .    B ADDR   0090H.1 A   
+P22 . . . . . . . . . . . . . . . . . .    B ADDR   0090H.2 A   
+P23 . . . . . . . . . . . . . . . . . .    B ADDR   0090H.3 A   
+P24 . . . . . . . . . . . . . . . . . .    B ADDR   0090H.4 A   
+P25 . . . . . . . . . . . . . . . . . .    B ADDR   0090H.5 A   
+P26 . . . . . . . . . . . . . . . . . .    B ADDR   0090H.6 A   
+P27 . . . . . . . . . . . . . . . . . .    B ADDR   0090H.7 A   
+P2IO. . . . . . . . . . . . . . . . . .    D ADDR   00B0H   A   
+P3. . . . . . . . . . . . . . . . . . .    D ADDR   00C0H   A   
+P30 . . . . . . . . . . . . . . . . . .    B ADDR   00C0H.0 A   
+P31 . . . . . . . . . . . . . . . . . .    B ADDR   00C0H.1 A   
+P32 . . . . . . . . . . . . . . . . . .    B ADDR   00C0H.2 A   
+P33 . . . . . . . . . . . . . . . . . .    B ADDR   00C0H.3 A   
+P34 . . . . . . . . . . . . . . . . . .    B ADDR   00C0H.4 A   
+P35 . . . . . . . . . . . . . . . . . .    B ADDR   00C0H.5 A   
+P36 . . . . . . . . . . . . . . . . . .    B ADDR   00C0H.6 A   
+P37 . . . . . . . . . . . . . . . . . .    B ADDR   00C0H.7 A   
+P3IO. . . . . . . . . . . . . . . . . .    D ADDR   009BH   A   
+PCON. . . . . . . . . . . . . . . . . .    D ADDR   0087H   A   
+PU8BYTEBUF?143. . . . . . . . . . . . .    X ADDR   0002H   R   SEG=?XD?_HAL_FLASHPAGEWRITE?SUBROUTINE
+PU8CODEBUF?253. . . . . . . . . . . . .    X ADDR   000DH   R   SEG=?XD?_HAL_FLASHREAD?SUBROUTINE
+PU8READBUF?249. . . . . . . . . . . . .    X ADDR   0002H   R   SEG=?XD?_HAL_FLASHREAD?SUBROUTINE
+PWM1DR. . . . . . . . . . . . . . . . .    D ADDR   00B6H   A   
+PWM1HR. . . . . . . . . . . . . . . . .    D ADDR   00B7H   A   
+PWM1PR. . . . . . . . . . . . . . . . .    D ADDR   00B5H   A   
+PWM3DRH . . . . . . . . . . . . . . . .    D ADDR   00CCH   A   
+PWM3DRL . . . . . . . . . . . . . . . .    D ADDR   00CBH   A   
+PWM3PRH . . . . . . . . . . . . . . . .    D ADDR   00CEH   A   
+PWM3PRL . . . . . . . . . . . . . . . .    D ADDR   00CDH   A   
+RDBH. . . . . . . . . . . . . . . . . .    D ADDR   00C2H   A   
+RDBL. . . . . . . . . . . . . . . . . .    D ADDR   00C3H   A   
+RDC0. . . . . . . . . . . . . . . . . .    D ADDR   00BDH   A   
+RDC1. . . . . . . . . . . . . . . . . .    D ADDR   00BAH   A   
+RDRH. . . . . . . . . . . . . . . . . .    D ADDR   00C4H   A   
+RDRL. . . . . . . . . . . . . . . . . .    D ADDR   00C5H   A   
+RMR . . . . . . . . . . . . . . . . . .    D ADDR   00E8H   A   
+ROB . . . . . . . . . . . . . . . . . .    D ADDR   00BFH   A   
+RODR. . . . . . . . . . . . . . . . . .    D ADDR   00BEH   A   
+SCCR. . . . . . . . . . . . . . . . . .    D ADDR   008AH   A   
+SMRR0 . . . . . . . . . . . . . . . . .    D ADDR   00D2H   A   
+SMRR1 . . . . . . . . . . . . . . . . .    D ADDR   00D3H   A   
+SRLC0 . . . . . . . . . . . . . . . . .    D ADDR   00D6H   A   
+SRLC1 . . . . . . . . . . . . . . . . .    D ADDR   00D7H   A   
+SUBROUTINE. . . . . . . . . . . . . . .    N NUMB   -----       
+T0. . . . . . . . . . . . . . . . . . .    D ADDR   00B3H   A   
+T0CR. . . . . . . . . . . . . . . . . .    D ADDR   00B2H   A   
+T0DR. . . . . . . . . . . . . . . . . .    D ADDR   00B3H   A   
+T1. . . . . . . . . . . . . . . . . . .    D ADDR   00B6H   A   
+T1CR. . . . . . . . . . . . . . . . . .    D ADDR   00B4H   A   
+T1DR. . . . . . . . . . . . . . . . . .    D ADDR   00B5H   A   
+T2CR. . . . . . . . . . . . . . . . . .    D ADDR   00C6H   A   
+T2DRH . . . . . . . . . . . . . . . . .    D ADDR   00C7H   A   
+T2DRL . . . . . . . . . . . . . . . . .    D ADDR   00CFH   A   
+T2H . . . . . . . . . . . . . . . . . .    D ADDR   00C7H   A   
+T2HDR . . . . . . . . . . . . . . . . .    D ADDR   00C7H   A   
+A51 MACRO ASSEMBLER  SUBROUTINE                                                           02/21/2022 13:11:15 PAGE    23
+
+T2L . . . . . . . . . . . . . . . . . .    D ADDR   00CFH   A   
+T2LDR . . . . . . . . . . . . . . . . .    D ADDR   00CFH   A   
+T3CR. . . . . . . . . . . . . . . . . .    D ADDR   00CAH   A   
+T3CR2 . . . . . . . . . . . . . . . . .    D ADDR   00C9H   A   
+T3DRH . . . . . . . . . . . . . . . . .    D ADDR   00CEH   A   
+T3DRL . . . . . . . . . . . . . . . . .    D ADDR   00CDH   A   
+T3H . . . . . . . . . . . . . . . . . .    D ADDR   00CCH   A   
+T3HDR . . . . . . . . . . . . . . . . .    D ADDR   00CEH   A   
+T3L . . . . . . . . . . . . . . . . . .    D ADDR   00CBH   A   
+T3LDR . . . . . . . . . . . . . . . . .    D ADDR   00CDH   A   
+U16BYTELEN?250. . . . . . . . . . . . .    X ADDR   0005H   R   SEG=?XD?_HAL_FLASHREAD?SUBROUTINE
+U16CODEADDR?142 . . . . . . . . . . . .    X ADDR   0000H   R   SEG=?XD?_HAL_FLASHPAGEWRITE?SUBROUTINE
+U16CODEADDR?248 . . . . . . . . . . . .    X ADDR   0000H   R   SEG=?XD?_HAL_FLASHREAD?SUBROUTINE
+U16FLASHWORDADDR?040. . . . . . . . . .    X ADDR   0000H   R   SEG=?XD?_HAL_FLASHPAGEERASE?SUBROUTINE
+U16READSUM_1?254. . . . . . . . . . . .    X ADDR   000FH   R   SEG=?XD?_HAL_FLASHREAD?SUBROUTINE
+U16READSUM_2?255. . . . . . . . . . . .    X ADDR   0011H   R   SEG=?XD?_HAL_FLASHREAD?SUBROUTINE
+U32LASTCODEADDR?252 . . . . . . . . . .    X ADDR   0009H   R   SEG=?XD?_HAL_FLASHREAD?SUBROUTINE
+U8EA?147. . . . . . . . . . . . . . . .    X ADDR   0007H   R   SEG=?XD?_HAL_FLASHPAGEWRITE?SUBROUTINE
+U8OPTION?144. . . . . . . . . . . . . .    X ADDR   0005H   R   SEG=?XD?_HAL_FLASHPAGEWRITE?SUBROUTINE
+U8STATUS?146. . . . . . . . . . . . . .    X ADDR   0006H   R   SEG=?XD?_HAL_FLASHPAGEWRITE?SUBROUTINE
+UBAUD0. . . . . . . . . . . . . . . . .    D ADDR   00E6H   A   
+UBAUD1. . . . . . . . . . . . . . . . .    D ADDR   00FEH   A   
+UCTRL01 . . . . . . . . . . . . . . . .    D ADDR   00E2H   A   
+UCTRL02 . . . . . . . . . . . . . . . .    D ADDR   00E3H   A   
+UCTRL03 . . . . . . . . . . . . . . . .    D ADDR   00E4H   A   
+UCTRL11 . . . . . . . . . . . . . . . .    D ADDR   00FAH   A   
+UCTRL12 . . . . . . . . . . . . . . . .    D ADDR   00FBH   A   
+UCTRL13 . . . . . . . . . . . . . . . .    D ADDR   00FCH   A   
+UDATA0. . . . . . . . . . . . . . . . .    D ADDR   00E7H   A   
+UDATA1. . . . . . . . . . . . . . . . .    D ADDR   00FFH   A   
+USTAT0. . . . . . . . . . . . . . . . .    D ADDR   00E5H   A   
+USTAT1. . . . . . . . . . . . . . . . .    D ADDR   00FDH   A   
+WDTMR . . . . . . . . . . . . . . . . .    D ADDR   008DH   A   
+WDTR. . . . . . . . . . . . . . . . . .    D ADDR   008EH   A   
+WTCR0H. . . . . . . . . . . . . . . . .    D ADDR   00F1H   A   
+WTCR0L. . . . . . . . . . . . . . . . .    D ADDR   00F2H   A   
+WTCR1H. . . . . . . . . . . . . . . . .    D ADDR   00F3H   A   
+WTCR1L. . . . . . . . . . . . . . . . .    D ADDR   00F4H   A   
+WTCR2H. . . . . . . . . . . . . . . . .    D ADDR   00F5H   A   
+WTCR2L. . . . . . . . . . . . . . . . .    D ADDR   00F6H   A   
+WTDR0 . . . . . . . . . . . . . . . . .    D ADDR   00D5H   A   
+WTDR1 . . . . . . . . . . . . . . . . .    D ADDR   00D4H   A   
+WTHDR . . . . . . . . . . . . . . . . .    D ADDR   00DCH   A   
+WTMR. . . . . . . . . . . . . . . . . .    D ADDR   00D1H   A   
+WTSR. . . . . . . . . . . . . . . . . .    D ADDR   00D9H   A   
+_?MC96_WDTRESTART . . . . . . . . . . .    C ADDR   0000H   R   SEG=?PR?_?MC96_WDTRESTART?SUBROUTINE
+_HAL_FLASHPAGEERASE . . . . . . . . . .    C ADDR   0000H   R   SEG=?PR?_HAL_FLASHPAGEERASE?SUBROUTINE
+_HAL_FLASHPAGEWRITE . . . . . . . . . .    C ADDR   0000H   R   SEG=?PR?_HAL_FLASHPAGEWRITE?SUBROUTINE
+_HAL_FLASHREAD. . . . . . . . . . . . .    C ADDR   0000H   R   SEG=?PR?_HAL_FLASHREAD?SUBROUTINE
+_MC96_WDTSET. . . . . . . . . . . . . .    C ADDR   0000H   R   SEG=?PR?_MC96_WDTSET?SUBROUTINE
+_SYS_WDTSET . . . . . . . . . . . . . .    C ADDR   0000H   R   SEG=?PR?_SYS_WDTSET?SUBROUTINE
+
+
+REGISTER BANK(S) USED: 0 
+
+
+ASSEMBLY COMPLETE.  0 WARNING(S), 0 ERROR(S)
